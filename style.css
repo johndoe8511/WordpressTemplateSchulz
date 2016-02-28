@@ -30,7 +30,7 @@ body                { color: #333;  background-color: #c9c9c9 !important;}
                                     }
 #sidebar            { padding: 10px; padding-top: 20px; float: left; /*background-color: #eee;*/}
 #main               { padding: 20px; /*background-color: #ddd;*/}
-#mainSearch         {  /*background-color: #ddd;*/}
+#mainSearch         { margin-bottom: 20px; /*background-color: #ddd;*/}
 #footer             { padding-top: 20px; /*background-color: #fff;*/}
 
 .rounded {

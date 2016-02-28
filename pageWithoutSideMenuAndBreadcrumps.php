@@ -1,6 +1,6 @@
 <?php 
 /*
-Template Name: Seite ohne Seitenmenü und ohne Seitennachvervolgung
+Template Name: Seite ohne Seitenmenü und Seitennachvervolgung
 */
 ?>
 <?php get_header(); ?>
@@ -11,7 +11,7 @@ Template Name: Seite ohne Seitenmenü und ohne Seitennachvervolgung
             <div id="content" >
                 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
                     <h2><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h2>
-                    <div class="entry">
+                    <div class="entry ">
                         <?php the_content(); ?>
                     </div>
                 <?php endwhile; endif; ?>
