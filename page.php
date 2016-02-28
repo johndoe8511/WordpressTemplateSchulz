@@ -1,34 +1,32 @@
-<?php
-/**
- * Template Name: Default Page
- * Description: Page template with a content container and right sidebar.
- *
- * @package WordPress
- * @subpackage BootstrapWP
- */
-get_header(); ?>
-<?php while (have_posts()) : the_post(); ?>
+<?php get_header(); ?>
+TEST
+    <div class="container-fluid">
+        <div class="row">
 
-  <div class="container">
-    <div class="row">
-        <div class="span12">
-            <?php if (function_exists('bootstrapwp_breadcrumbs')) {
-            bootstrapwp_breadcrumbs();
-        } ?>
-        </div><!--/.span12 -->
-    </div><!--/.row -->
+            <div id="sidebar" class="col-md-3">
+               <?php get_sidebar(); ?>
+            </div><!-- sidebar --> 
 
-    <header class="page-title">
-        <h1><?php the_title();?></h1>
-    </header>
 
-  <div class="row content">
-    <div class="span8">
-        <?php the_content(); ?>
-        <?php wp_link_pages( array('before' => '<div class="page-links">' . __('Pages:', 'bootstrapwp'), 'after' => '</div>')); ?>
-        <?php edit_post_link(__('Edit', 'bootstrapwp'), '<span class="edit-link">', '</span>'); ?>
-        <?php endwhile; // end of the loop. ?>
-    </div><!-- /.span8 -->
+            <div id="main" class="col-md-9">
+            <?php if (function_exists('nav_breadcrumb')) nav_breadcrumb(); ?>
+            <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+                <h2><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h2>
+                <div class="entry">
+                    <?php the_content(); ?>
+                </div>
+            <?php endwhile; endif; ?>
 
-    <?php get_sidebar(); ?>
-    <?php get_footer(); ?>
+            <?php
+               /*
+                * Kommentare sind auf Seiten deaktiviert.
+                * Möchtest du die Kommentarfunktion auf Seiten aktivieren, entferne einfach die beiden "//"-Zeichen vor "comments_template();"
+                */
+
+               //comments_template();
+            ?>
+            </div>
+        </div>
+   </div><!-- main --> 
+ 
+<?php get_footer(); ?>

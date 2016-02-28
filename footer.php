@@ -1,20 +1,26 @@
-<?php
-/**
- * Default Footer
- *
- * @package WordPress
- * @subpackage BootstrapWP
- */
-?>
-        <footer>
-            <div class="container">
-                <p>&copy; <?php bloginfo('name'); ?> <?php the_time('Y') ?></p>
-                <?php
-                if (function_exists('dynamic_sidebar')) {
-                    dynamic_sidebar("footer-content");
-                } ?>
-            </div><!-- /container -->
-        </footer>
+        <div id="footer"></div><!-- footer -->
+ 
+ 
         <?php wp_footer(); ?>
+        
+        <div id="debug">
+            <div id="container">
+                <?php 
+                    global $post;
+                    global $get;
+                    echo '<pre>';
+                    echo 'GET: ';
+                    print_r($get);
+                    echo '</pre>';
+                    echo '<pre>';
+                    echo 'POST: ';
+                    print_r($post);
+                    echo '</pre>';
+                ?>
+            </div>
+            
+        </div>
+        </div>
+<!-- Statistik/Analyse-Tool einbauen -->
     </body>
 </html>

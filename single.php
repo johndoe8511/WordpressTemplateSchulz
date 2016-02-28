@@ -1,38 +1,30 @@
-<?php
-/**
- * Default Post Template
- * Description: Post template with a content container and right sidebar.
- *
- * @package WordPress
- * @subpackage BootstrapWP
- */
-get_header(); ?>
-<?php while (have_posts()) : the_post(); ?>
 
-  <div class="container">
-    <div class="row">
-        <div class="span12">
-            <?php if (function_exists('bootstrapwp_breadcrumbs')) {
-            bootstrapwp_breadcrumbs();
-        } ?>
-        </div><!--/.span12 -->
-    </div><!--/.row -->
-
-    <header class="post-title">
-        <h1><?php the_title();?></h1>
-    </header>
-
-    <div class="row content">
-        <div class="span8">
-             <p class="meta"><?php echo bootstrapwp_posted_on();?></p>
+<?php get_header(); ?>
+	
+   <div id="sidebar">
+      <?php get_sidebar(); ?>
+   </div><!-- sidebar -->
+	
+   <div id="main">
+   
+    <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+        <h2>
+			<a href="<?php the_permalink() ?>"><?php the_title(); ?></a>
+		</h2>
+       <div id="meta">
+            <p>erstellt am: <?php the_date('d.m.Y'); ?> |
+            von: <?php the_author(); ?> |
+            Kategorie(n): <?php the_category(', '); ?></p>
+         </div>
+		<div class="entry">
             <?php the_content(); ?>
-            <?php the_tags('<p>Tags: ', ', ', '</p>'); ?>
-            <?php endwhile; // end of the loop. ?>
-            <hr/>
-
-            <?php comments_template(); ?>
-            <?php bootstrapwp_content_nav('nav-below'); ?>
-        </div><!-- /.span8 -->
-
-    <?php get_sidebar('blog'); ?>
-    <?php get_footer(); ?>
+         </div>
+      <?php endwhile; ?>
+ 
+         <p align="center"><?php next_posts_link('&laquo; &Auml;ltere Eintr&auml;ge') ?> | <?php previous_posts_link('Neuere Eintr&auml;ge &raquo;') ?></p>
+ 
+    <?php endif; ?>
+   
+   </div><!-- main -->
+ 
+<?php get_footer(); ?>
