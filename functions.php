@@ -12,7 +12,6 @@ if ( function_exists('register_nav_menus') )
 {
     register_nav_menus(array(
         'main-menu' => __( 'Hauptnavigation' ),
-        'side-menu' => __( 'Seitennavigation' )
     ));
 }
 

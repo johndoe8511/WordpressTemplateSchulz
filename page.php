@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-TEST
+<div id="content" >
     <div class="container-fluid">
         <div class="row">
 
@@ -25,8 +25,9 @@ TEST
 
                //comments_template();
             ?>
-            </div>
+            </div><!-- main --> 
         </div>
-   </div><!-- main --> 
+    </div>
+</div><!-- content --> 
  
 <?php get_footer(); ?>

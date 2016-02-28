@@ -1,0 +1,24 @@
+/*
+Theme Name: Mac
+Theme URI: 
+Description: Template Schulz Dozent Website
+Author: Dennis Berger
+Author URI: 
+*/
+
+//@import url('/schulzWebsite/wordpress/wp-content/themes/SchulzDozent/bootstrap/css/bootstrap.css');
+//@import url('bootstrap/css/bootstrap.css') print;
+//@import '/wp-content/themes/SchulzDozent/bootstrap/css/bootstrap.css';
+
+
+
+html                {color: #333;  background-color: #eee !important;}
+body                {color: #333;  background-color: #eee !important;}
+#wrapper            {background-color: #eee;}
+#contentWrapper     {background-color: #eee;}
+#header             { /*background-color: 222;*/ /*border: 1px solid #ccc;*/}
+#content            {background-color: #fff;}
+#sidebar            { padding: 10px; padding-top: 20px; float: left; /*background-color: #eee;*/}
+#main               { padding: 20px; /*background-color: #ddd;*/}
+#footer             {padding-top: 20px; /*background-color: #fff;*/}
+
