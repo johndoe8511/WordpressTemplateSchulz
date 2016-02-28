@@ -1,6 +1,6 @@
 <?php 
 /*
-Template Name: Seite ohne Seitenmenü
+Template Name: Seite ohne Seitenmenü und ohne Seitennachvervolgung
 */
 ?>
 <?php get_header(); ?>

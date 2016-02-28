@@ -35,7 +35,6 @@
         
         <div id="wrapper" >
             <div id="contentWrapper" class="container">
-                <a name="top"></a>
                 <div id="header" >
                     <nav class="navbar navbar-default">
                         <div class="container-fluid">

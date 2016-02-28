@@ -32,7 +32,7 @@
                                         ?>
                                     </ul>
                                     <ul class="nav navbar-nav navbar-right">
-                                        <li> <a  href="#top">nach oben</a></li>
+                                        <li> <a  href="#">nach oben</a></li>
                                     </ul>
                                 </div><!-- /.navbar-collapse -->
                             </div><!-- /.container-fluid -->

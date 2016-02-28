@@ -12,13 +12,28 @@ Author URI:
 
 
 
-html                {color: #333;  background-color: #c9c9c9 !important;}
-body                {color: #333;  background-color: #c9c9c9 !important;}
-#wrapper            {background-color: #c9c9c9;}
-#contentWrapper     {background-color: #c9c9c9;}
+html                { color: #333;  background-color: #c9c9c9 !important;}
+body                { color: #333;  background-color: #c9c9c9 !important;}
+#wrapper            { background-color: #c9c9c9;}
+#contentWrapper     { background-color: #c9c9c9;}
 #header             { /*background-color: 222;*/ /*border: 1px solid #ccc;*/}
-#content            {background-color: #fff;}
+#content            {
+                        background-color: #fff;
+                        border-radius: 5px;
+                        padding: 10px;
+                        padding-top: 15px;
+                        //border-background: #000; // without a background or border applied you won't be able to see if its rounded
+                    }
+#content h2         { margin-top: 0px;}
+#searchparameter .breadcrumb        { 
+                                        //margin-bottom: 10px;
+                                    }
 #sidebar            { padding: 10px; padding-top: 20px; float: left; /*background-color: #eee;*/}
 #main               { padding: 20px; /*background-color: #ddd;*/}
-#footer             {padding-top: 20px; /*background-color: #fff;*/}
+#mainSearch         {  /*background-color: #ddd;*/}
+#footer             { padding-top: 20px; /*background-color: #fff;*/}
+
+.rounded {
+ 
+}
 
