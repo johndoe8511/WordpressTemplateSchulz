@@ -12,10 +12,10 @@ Author URI:
 
 
 
-html                {color: #333;  background-color: #eee !important;}
-body                {color: #333;  background-color: #eee !important;}
-#wrapper            {background-color: #eee;}
-#contentWrapper     {background-color: #eee;}
+html                {color: #333;  background-color: #c9c9c9 !important;}
+body                {color: #333;  background-color: #c9c9c9 !important;}
+#wrapper            {background-color: #c9c9c9;}
+#contentWrapper     {background-color: #c9c9c9;}
 #header             { /*background-color: 222;*/ /*border: 1px solid #ccc;*/}
 #content            {background-color: #fff;}
 #sidebar            { padding: 10px; padding-top: 20px; float: left; /*background-color: #eee;*/}
