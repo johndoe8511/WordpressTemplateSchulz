@@ -1,7 +1,7 @@
 <?php
 
 // Register Custom Navigation Walker
-require_once('nav_walker/wp_bootstrap_navwalker.php');
+require_once('include/nav_walker/wp_bootstrap_navwalker.php');
 
 if ( function_exists('register_sidebar') )
 {

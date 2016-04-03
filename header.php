@@ -11,24 +11,27 @@
 
     <title><?php wp_title(' - ', true, 'right'); ?> <?php bloginfo('name'); ?></title>
    
+    <!-- CSS -->
     <!-- Bootstrap -->
-    <link href="<?php echo get_stylesheet_directory_uri() ?>/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-
+    <link href="<?php echo get_stylesheet_directory_uri() ?>/include/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="<?php echo get_stylesheet_directory_uri() ?>/css/normalize.css" rel="stylesheet" type="text/css">
     
-    <!-- Custom styles for this template -->
-    <link href="<?php echo get_stylesheet_directory_uri() ?>/css/sticky-footer.css" rel="stylesheet" type="text/css">
+    <!-- Awsemefont -->
+    <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri() ?>/include/font-awesome-4_5/css/font-awesome.css">
         
-    <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" media="screen" />
-    <link href="<?php echo get_stylesheet_directory_uri() ?>/style.css" rel="stylesheet" type="text/css">
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri() ?>/style.css" media="screen"  type="text/css">
     <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
-
+    
+    <!-- JAVASCRIPT -->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="<?php echo get_stylesheet_directory_uri() ?>/bootstrap/js/bootstrap.min.js"></script>
+    <script src="<?php echo get_stylesheet_directory_uri() ?>/include/bootstrap/js/bootstrap.min.js"></script>
+    
+    <script src="<?php echo get_stylesheet_directory_uri() ?>/js/backToTop.js"></script>
+    
     <?php wp_head(); ?>
- 
 </head>
    
     <body <?php body_class(); ?>  data-spy="scroll" data-target=".bs-docs-sidebar" data-offset="10">
@@ -36,8 +39,8 @@
         <div id="wrapper" >
             <div id="contentWrapper" class="container">
                 <div id="header" >
-                    <nav class="navbar navbar-default">
-                        <div class="container-fluid">
+                    <nav class="navbar navbar-default navbar-fixed-top">
+                        <div class="container">
                             <!-- Brand and toggle get grouped for better mobile display -->
                             <div class="navbar-header">
                                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -46,7 +49,9 @@
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
                                 </button>
-                                <a class="navbar-brand" href="<?php echo get_home_url(); ?>">Brand</a>
+                                <a class="navbar-brand" href="<?php echo get_home_url(); ?>">
+                                    <img alt="Brand" src="<?php bloginfo('template_directory');?>/img/WappenPNG.png">
+                                </a>
                             </div>
 
                             <!-- Collect the nav links, forms, and other content for toggling -->
