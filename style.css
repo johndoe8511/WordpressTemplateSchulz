@@ -16,7 +16,7 @@ html                { color: #333;  background-color: #D3D3D3 !important;}
 body                { 
                         color: #333;  
                         background-color: #D3D3D3 !important;
-                        padding-top: 70px; /* sticky header */
+                        padding-top: 30px; /* sticky header */
                         padding-bottom: 30px; /* sticky footer */
                     }
 #wrapper            { background-color: #D3D3D3;}
@@ -30,7 +30,10 @@ body                {
                         //border-background: #000; // without a background or border applied you won't be able to see if its rounded
                     }
 
-#content h2         { margin-top: 0px;}
+#content h2         { 
+                        margin-top: 0px;
+                        color: #337ab7;
+                    }
 #searchparameter .breadcrumb        { 
                                         //margin-bottom: 10px;
                                     }
