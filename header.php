@@ -35,8 +35,8 @@
 </head>
    
     <body <?php body_class(); ?>  data-spy="scroll" data-target=".bs-docs-sidebar" data-offset="10">
-        
-        <div id="wrapper" >
+
+        <div id="wrapper">
             <div id="contentWrapper" class="container">
                 <div id="header" >
                     <nav class="navbar navbar-default navbar-fixed-top">
@@ -49,9 +49,11 @@
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
                                 </button>
-                                <a class="navbar-brand" href="<?php echo get_home_url(); ?>">
-                                    <img alt="Brand" src="<?php bloginfo('template_directory');?>/img/WappenPNG.png">
-                                </a>
+                                <div  class="container-fluid">
+                                    <a class="navbar-brand" href="<?php echo get_home_url(); ?>">
+                                        <img alt="Brand" src="<?php bloginfo('template_directory');?>/img/WappenModifiedTransparent.png">
+                                    </a>
+                                </div>
                             </div>
 
                             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -75,17 +77,15 @@
                                 <form class="navbar-form navbar-right" role="search" method="get" id="searchform" class="searchform" action="<?php echo site_url(); ?>">
                                     <div class="form-group">
                                         <input type="text"  value="" name="s" id="s" class="form-control" placeholder="Search">
-              
                                     </div>
                                     <button type="submit" id="searchsubmit" class="btn btn-default">Submit</button>
                                 </form>
                             </div><!-- /.navbar-collapse -->
                         </div><!-- /.container-fluid -->
                     </nav>
-                    
-                    
                 </div><!-- header -->
-    
+                <div class="imageSchulzWappen">
+                </div><!-- image wappen -->
     <!-- 
     <h1><a href="<?php //bloginfo('url'); ?>"><?php //bloginfo('name'); ?></a></h1>
     <h3><?php //bloginfo('description'); ?></h3>

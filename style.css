@@ -16,27 +16,44 @@ html                { color: #333;  background-color: #D3D3D3 !important;}
 body                { 
                         color: #333;  
                         background-color: #D3D3D3 !important;
-                        padding-top: 30px; /* sticky header */
+                        padding-top: 50px; /* sticky header */
                         padding-bottom: 30px; /* sticky footer */
                     }
 #wrapper            { background-color: #D3D3D3;}
 #contentWrapper     { background-color: #D3D3D3;}
 #header             { /*background-color: 222;*/ /*border: 1px solid #ccc;*/}
+#header .navbar-header .navbar-brand   { 
+                                            margin: 0px; 
+                                            padding: 0px;
+                                            height: 50px; 
+                                            width: 36px;
+                                        }
+#header .navbar-header .navbar-brand img { 
+                                            padding-top: 1px;
+                                            padding-bottom: 1px;
+                                            max-height: 48px; 
+                                            max-width: 38px; 
+                                        }
 #content            {
                         background-color: #fff;
                         border-radius: 5px;
                         padding: 10px;
                         padding-top: 15px;
                         //border-background: #000; // without a background or border applied you won't be able to see if its rounded
+                        
                     }
 
 #content h2         { 
                         margin-top: 0px;
                         color: #337ab7;
                     }
-#searchparameter .breadcrumb        { 
-                                        //margin-bottom: 10px;
-                                    }
+#searchparameter    { 
+                        margin-top: 10px;
+                        margin-bottom: 10px;
+                    }
+#searchparameter p  { 
+                        font-size: 9pt;
+                    }
 #sidebar            { padding: 10px; padding-top: 20px; float: left; /*background-color: #eee;*/}
 #main               { padding: 20px; /*background-color: #ddd;*/}
 #mainSearch         { margin-bottom: 20px; /*background-color: #ddd;*/}
@@ -47,7 +64,18 @@ body                {
                         border-color: black;
                         border-top: 1px solid;
                     }
-
+ div.imageSchulzWappen {
+                            background:url("/SchulzWebsite/wordpress/wp-content/themes/WordpressTemplateSchulz/img/WappenModifiedTransparentMitName.png");
+                            background-position:center;
+                            background-size: contain;
+                            background-repeat: no-repeat;
+                            //position: absolute;
+                            top: 80px;
+                            right: 50px;
+                            width: inherit;
+                            height: 300px;
+                            //z-index: 0;
+                        }
 
 .rounded            {}
 
