@@ -1,15 +1,18 @@
 <?php 
 /*
-Template Name: Seite ohne Seitenmenü
+Template Name: Seite ohne Seitenmenü und ohne Seitennachvervolgung mit Bild Slider
 */
 ?>
 <?php get_header(); ?>
 
 <div class="container-fluid">
     <div class="row">
+        
         <div id="main" class="col-xs-12 col-sm-12 col-md-12">
-             <?php setBackgroundColorDropDownButton('Fachgebiete'); ?>
-            <?php if (function_exists('nav_breadcrumb')) nav_breadcrumb(); ?>
+            <div id="contentSlider" >
+            <?php if ( function_exists( 'soliloquy' ) ) { soliloquy( '735' ); } ?>
+            </div>
+            </br>
             <div id="content" >
                 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
                     <h2><?php the_title(); ?></h2>

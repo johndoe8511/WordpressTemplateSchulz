@@ -10,7 +10,7 @@
     <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
 
     <title><?php wp_title(' - ', true, 'right'); ?> <?php bloginfo('name'); ?></title>
-   
+    <link rel="icon"  href="<?php bloginfo('template_directory');?>/img/CrestColorTransparent128x128.png">
     <!-- CSS -->
     <!-- Bootstrap -->
     <link href="<?php echo get_stylesheet_directory_uri() ?>/include/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -30,7 +30,7 @@
     <script src="<?php echo get_stylesheet_directory_uri() ?>/include/bootstrap/js/bootstrap.min.js"></script>
     
     <script src="<?php echo get_stylesheet_directory_uri() ?>/js/backToTop.js"></script>
-    
+    <script src="<?php echo get_stylesheet_directory_uri() ?>/js/dropdownParrentLinkActive.js"></script>
     <?php wp_head(); ?>
 </head>
    
@@ -51,7 +51,7 @@
                                 </button>
                                 <div  class="container-fluid">
                                     <a class="navbar-brand" href="<?php echo get_home_url(); ?>">
-                                        <img alt="Brand" src="<?php bloginfo('template_directory');?>/img/WappenModifiedTransparent.png">
+                                        <img alt="Brand" src="<?php bloginfo('template_directory');?>/img/CrestColorTransparent128x128.png">
                                     </a>
                                 </div>
                             </div>
@@ -65,6 +65,7 @@
                                         'container_class' => 'nav-collapse collapse',
                                         'theme_location' => 'main-menu',
                                         'depth' => 2,
+                                        'max_depth' => 2,
                                         'container' => false,
                                         'menu_class' => 'nav navbar-nav',
                                         'fallback_cb' => 'wp_bootstrap_navwalker::fallback',
@@ -76,9 +77,9 @@
                                 
                                 <form class="navbar-form navbar-right" role="search" method="get" id="searchform" class="searchform" action="<?php echo site_url(); ?>">
                                     <div class="form-group">
-                                        <input type="text"  value="" name="s" id="s" class="form-control" placeholder="Search">
+                                        <input type="text"  value="" name="s" id="s" class="form-control" placeholder="Suchtext">
                                     </div>
-                                    <button type="submit" id="searchsubmit" class="btn btn-default">Submit</button>
+                                    <button type="submit" id="searchsubmit" class="btn btn-default">Suche</button>
                                 </form>
                             </div><!-- /.navbar-collapse -->
                         </div><!-- /.container-fluid -->

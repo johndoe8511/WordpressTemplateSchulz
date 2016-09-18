@@ -17,7 +17,7 @@
                                     <!-- Collect the nav links, forms, and other content for toggling -->
                                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
                                          <ul class="nav navbar-nav navbar-left">
-                                            <li> <a  href="#">Copyright 2016 &#169;</a></li>
+                                            <li> <a id="copyright">Copyright &#169; <?php echo date('Y'); ?> Jürgen Schulz </a></li>
                                             <?php
                                             wp_nav_menu(array(
                                                 'menu' => 'footer-menu',

@@ -35,7 +35,7 @@ function getChildNavigationSidemenü()
         ); 
         $currentPageChildrenArray = get_pages($args); 
        
-        createHTMLPageSidemenüNavigaion($currentPageChildrenArray);
+        createHTMLPageSidemenuNavigaion($currentPageChildrenArray);
 
         // echo what we get back from WP to the browser
         //echo '<pre>' . print_r( $currentPageChildrenArray, true ) . '</pre>';
@@ -43,7 +43,12 @@ function getChildNavigationSidemenü()
     }
 }
 
-function createHTMLPageSidemenüNavigaion($pageChildrenArray)
+/**
+ * create sidbar navigation HTML div element
+ * @global type $post
+ * @param type $pageChildrenArray
+ */
+function createHTMLPageSidemenuNavigaion($pageChildrenArray)
 {
     global $post;
     if(!empty($pageChildrenArray))
@@ -200,7 +205,95 @@ function nav_breadcrumb()
 
         echo '</nav>';
     } 
-} 
+}
 
+/**
+ * check post parrents by post title name, recursive function call
+ * @param type $postParentId parrent id of wordpress post
+ * @param type $comparedPostName compared parent posts title name
+ * @return boolean true/false
+ */
+function checkPostParrentsByPostTitle($postParentId, $comparedPostName = '' )
+{
+    $parentPost = array();
+    if(!empty($postParentId))
+    {
+        $parentPost = get_post($postParentId);
+    }
+    
+    if(!empty($parentPost))
+    {
+        //compare post title
+        if($parentPost->post_title == $comparedPostName)
+        {
+            return true;
+        }
+        //recursive function call
+        if(checkPostParrentsByPostTitle($parentPost->post_parent,$comparedPostName))
+        {
+            return true;
+        }
+    }
+   
+   return false;
+}
+
+/**
+ * set dropdown navi link button to active background color when child post 
+ * which listed in dropdown is viewed by user
+ * @param string $comparedPostName
+ */
+function setBackgroundColorDropDownButton($comparedPostName = '')
+{ 
+    global $post;
+    if(checkPostParrentsByPostTitle($post->post_parent, $comparedPostName))
+    {
+        ?>
+            <script type="text/javascript">
+                $('#NavLink_<?php echo $comparedPostName;?>').css({"background-color":"#23527c"});
+            </script>
+        <?php
+    }
+}
+
+
+
+/**
+ * Seitentypen
+ */
+/*
+function my_custom_content_type() 
+{
+    $labels = array(
+     'name'               => 'Custom-Info-Pages',
+     'singular_name'      => 'Custom-Info-Page',
+     'menu_name'          => 'Info-Pages',
+     'name_admin_bar'     => 'Info-Page');
+
+    $args = array(
+     'labels'              => $labels,
+     'public'              => true,
+     'exclude_from_search' => false,
+     'publicly_queryable'  => true,
+     'show_ui'             => true,
+     'show_in_nav_menus'   => true,
+     'show_in_menu'        => true,
+     'show_in_admin_bar'   => true,
+     'menu_position'       => 5,
+     'menu_icon'           => 'dashicons-admin-appearance',
+     'capability_type'     => 'post',
+     'hierarchical'        => false,
+     'supports'            => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' ),
+     'has_archive'         => false,
+     'rewrite'             => array( 'slug' => 'custom-info' ),
+     'query_var'           => true
+     );
+
+    register_post_type( 'custom_content_type', $args );
+    // flush_rewrite_rules();
+}
+
+add_action( 'init', 'my_custom_content_type', 0 );
+*/
 ?>
 

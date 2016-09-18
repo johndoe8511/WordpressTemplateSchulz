@@ -1,13 +1,13 @@
 <?php get_header(); ?>
-
 <div class="container-fluid">
     <div class="row">
-       
+      
         <div id="sidebar" class="col-xs-12 col-sm-12 col-md-3">
            <?php get_sidebar(); ?>
         </div><!-- sidebar --> 
 
         <div id="main" class="col-xs-12 col-sm-12 col-md-9">
+           
             <?php if (function_exists('nav_breadcrumb')) nav_breadcrumb(); ?> <!-- breadcrums -->
             <div id="content" >
             <?php if (have_posts()) : while (have_posts()) : the_post(); ?>

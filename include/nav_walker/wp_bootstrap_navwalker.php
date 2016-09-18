@@ -70,7 +70,7 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 
 			$class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
 
-			$id = apply_filters( 'nav_menu_item_id', 'menu-item-'. $item->ID, $item, $args );
+			$id = apply_filters( 'nav_menu_item_id', 'menu-item-'. $item->post_name, $item, $args );
 			$id = $id ? ' id="' . esc_attr( $id ) . '"' : '';
 
 			$output .= $indent . '<li' . $id . $value . $class_names .'>';
@@ -82,9 +82,10 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 
 			// If item has_children add atts to a.
 			if ( $args->has_children && $depth === 0 ) {
-				$atts['href']   		= '#';
+				$atts['href']   	= '#';
 				$atts['data-toggle']	= 'dropdown';
-				$atts['class']			= 'dropdown-toggle';
+				$atts['class']		= 'dropdown-toggle';
+                                $atts['id']		= !empty( $item->title ) ? 'NavLink_'.$item->title	: 'NavLink_EmptyTitel_ID'.$item->ID;
 				$atts['aria-haspopup']	= 'true';
 			} else {
 				$atts['href'] = ! empty( $item->url ) ? $item->url : '';
