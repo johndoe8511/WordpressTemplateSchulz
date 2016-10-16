@@ -1,5 +1,15 @@
 <?php
 
+add_theme_support( 'post-thumbnails' );
+
+// To get the thumbnail in your post, you add the following inside the loop:
+if ( has_post_thumbnail() ) 
+{
+    set_post_thumbnail_size( 400, 150 ); # width, height #
+    the_post_thumbnail();
+}
+
+
 // Register Custom Navigation Walker
 require_once('include/nav_walker/wp_bootstrap_navwalker.php');
 
@@ -256,44 +266,116 @@ function setBackgroundColorDropDownButton($comparedPostName = '')
     }
 }
 
-
-
 /**
- * Seitentypen
+ * Seitentypen Link
  */
-/*
-function my_custom_content_type() 
-{
-    $labels = array(
-     'name'               => 'Custom-Info-Pages',
-     'singular_name'      => 'Custom-Info-Page',
-     'menu_name'          => 'Info-Pages',
-     'name_admin_bar'     => 'Info-Page');
 
+function cpt_links() 
+{
+    $labels = array
+    (
+        'name'                  => _x('Links','post type general name'),
+        'singular_name'         => _x('Link','post type singular name'),
+        'menu_name'             => 'Links',
+        'name_admin_bar'        => 'Alle Links',
+        'add_new'               => _x('Hinzufügen','Links'),
+        'add_new_item'          => __('Neuen Link hinzufügen'),
+        'edit_item'             => __('Link bearbeiten'),
+        'new_item'              => __('Neuer Link'),
+        'view_item'             => __('Link ansehen'),
+        'search_items'          => __('Nach Link suchen'),
+        'not_found'             => __('Kein Link gefunden'),
+        'not_fount_in_trash'    => __('Neuen Link im Papierkorb'),
+        'parrent_item_colon'    => ''
+    );
+    $supports = array( 'title'
+                        //,'editor'
+                        //,'author'
+                        ,'thumbnail'
+                        ,'post-thumbnails'
+                        //,'excerpt' 
+                        //,'trackbacks'
+                        //,'custom-fields'
+                        //,'comments' 
+                        ,'revisions'
+                        ,'page-attributes');
     $args = array(
+     'lable'               => 'Alle Links',
      'labels'              => $labels,
      'public'              => true,
-     'exclude_from_search' => false,
+     'exclude_from_search' => true,
      'publicly_queryable'  => true,
      'show_ui'             => true,
      'show_in_nav_menus'   => true,
      'show_in_menu'        => true,
      'show_in_admin_bar'   => true,
-     'menu_position'       => 5,
+     '_builtin'            => false,
+     'menu_position'       => 20,
      'menu_icon'           => 'dashicons-admin-appearance',
      'capability_type'     => 'post',
      'hierarchical'        => false,
-     'supports'            => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' ),
-     'has_archive'         => false,
-     'rewrite'             => array( 'slug' => 'custom-info' ),
-     'query_var'           => true
-     );
-
-    register_post_type( 'custom_content_type', $args );
+     'supports'            => $supports,
+     'has_archive'         => true,
+     'rewrite'             => array( 'slug' => 'links' ),
+     'query_var'           => true,
+        
+         'labels' => $labels,
+    'public' => true,
+    'publicly_queryable' => true,
+    'show_ui' => true, 
+    'show_in_menu' => true, 
+    'query_var' => true,
+    'rewrite' => true,
+    'capability_type' => 'post',
+    'has_archive' => true, 
+    'hierarchical' => false,
+    'menu_position' => null,
+     ); 
+    register_post_type( 'links', $args );
     // flush_rewrite_rules();
 }
 
-add_action( 'init', 'my_custom_content_type', 0 );
-*/
-?>
+add_action( 'init', 'cpt_links', 0 );
 
+add_action( 'admin_init', 'cpt_links_meta_boxen');
+add_action( 'save_post', 'cpt_links_daten_speichern');
+
+function cpt_links_meta_boxen()
+{
+    add_meta_box("url-meta", "URL", "cpt_links_feld_url","links","normal","high");
+    add_meta_box("kurzbeschreibung-meta", "Kurzbeschreibung (max. 100 Zeichen)", "cpt_links_feld_kurzbeschreibung","links","normal","high");
+    add_meta_box("email-meta", "E-Mail", "cpt_links_feld_email","links","normal","high");    
+}
+
+
+function cpt_links_feld_url()
+{
+    global $post;
+    $custom = get_post_custom($post->ID);
+    $url = $custom["url"][0];
+    echo '<input name="url" value="'.$url.'"/>';
+}
+function cpt_links_feld_email()
+{
+    global $post;
+    $custom = get_post_custom($post->ID);
+    $email = $custom["email"][0];
+    echo '<input name="email" value="'.$email.'"/>';
+}
+
+function cpt_links_feld_kurzbeschreibung()
+{
+    global $post;
+    $custom = get_post_custom($post->ID);
+    $kurzbeschreibung = $custom["kurzbeschreibung"][0];
+    echo '<textarea maxlength="100" name="kurzbeschreibung">'.$kurzbeschreibung.'</textarea>';
+}
+
+function cpt_links_daten_speichern()
+{
+    global $post;
+    update_post_meta($post->ID, "url", $_POST['url']);
+    update_post_meta($post->ID, "email", $_POST['email']);
+    update_post_meta($post->ID, "kurzbeschreibung", $_POST['kurzbeschreibung']);
+}
+?>

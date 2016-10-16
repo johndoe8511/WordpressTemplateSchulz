@@ -130,6 +130,17 @@ pre
    // border: 1px solid black;
 }
 
+#contentLinks          
+{
+   margin-top: 15px;
+   // border: 1px solid black;
+}
+
+.thumbnail
+{
+    //border: 1px solid #000;
+}
+
 #content h2         
 { 
     margin-top: 0px;
@@ -172,8 +183,17 @@ pre
     padding-left: 0px;
     border-color: black;
     border-top: 1px solid;
-    height:400px;
+    height:500px;
 }
+
+#entryLinks     
+{ 
+   background-color: #fff;
+   border-radius: 5px;
+   width: 100%;
+   align: center;
+}
+
 #entry p      
 { 
     padding-right: 10px;
@@ -207,16 +227,16 @@ div.imageSchulzWappen_H
 }
 div.imageSchulzWappenContact  
 {
-    background:url("/SchulzWebsite/wordpress/wp-content/themes/WordpressTemplateSchulz/img/CrestColorTransparentWithNameOpacity.png");
-    background-position-x: right;
-    background-position-y: top;
-    background-size: 200px ;
-    background-repeat: no-repeat;
-   // position: absolute;
+    //background:url("/SchulzWebsite/wordpress/wp-content/themes/WordpressTemplateSchulz/img/CrestColorTransparentWithNameOpacity.png");
+    //background-position-x: right;
+    //background-position-y: top;
+    //background-size: 200px ;
+    //background-repeat: no-repeat;
+    //position: absolute;
     //top: 100px;
-   // margin-left: 150px;
-   // width: inherit;
-    height: 400px;
+    //margin-left: 150px;
+    //width: inherit;
+    //height: 500px;*/
     //z-index: 0;
 
 }
