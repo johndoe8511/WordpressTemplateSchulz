@@ -14,12 +14,6 @@ $query = new WP_Query(array(
 
 <div class="container-fluid">    
     <div id="main">
-        <div id="content" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-                <h2><?php the_title(); ?></h2>
-                <?php the_content(); ?>
-            <?php endwhile; endif; ?>
-        </div><!-- content --> 
         <?php 
         $i = 0;
         while ( $query->have_posts() ) :$query->the_post(); 
@@ -27,7 +21,7 @@ $query = new WP_Query(array(
             {
                 ?><div class="row"><?php 
             } ?>
-            <div id="contentLinks" class="col-xs-12 col-sm-12 col-md-3 col-lg-3" >                                                          
+            <div id="contentLinks" class="col-xs-12 col-sm-12 col-md-3 col-lg-3" >
                 <div class="thumbnail" id="entryLinks">
                     <?php
                         //get thumbnail frompost
