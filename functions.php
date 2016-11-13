@@ -92,7 +92,7 @@ function nav_breadcrumb()
 {
     
     $delimiter = '&raquo;';
-    $home = 'Home'; 
+    $home = 'Start'; 
     $before = '<span class="current-page">'; 
     $after = '</span>'; 
  
@@ -378,4 +378,215 @@ function cpt_links_daten_speichern()
     update_post_meta($post->ID, "email", $_POST['email']);
     update_post_meta($post->ID, "kurzbeschreibung", $_POST['kurzbeschreibung']);
 }
+
+
+/**
+ * Seitentypen Firmen Referenz
+ */
+
+function cpt_firmenReferenz() 
+{
+    $labels = array
+    (
+        'name'                  => _x('Firmen Referenzen','post type general name'),
+        'singular_name'         => _x('Firmen Referenz','post type singular name'),
+        'menu_name'             => 'Firmen Referenz',
+        'name_admin_bar'        => 'Alle Firmen Referenzen',
+        'add_new'               => _x('Hinzufügen','Links'),
+        'add_new_item'          => __('Neue Firmen Referenz hinzufügen'),
+        'edit_item'             => __('Firmen Referenz bearbeiten'),
+        'new_item'              => __('Neue Firmen Referenz'),
+        'view_item'             => __('Firmen Referenz ansehen'),
+        'search_items'          => __('Nach Firmen Referenz suchen'),
+        'not_found'             => __('Kein Firmen Referenz gefunden'),
+        'not_fount_in_trash'    => __('Neue Firmen Referenz im Papierkorb'),
+        'parrent_item_colon'    => ''
+    );
+    $supports = array( 'title'
+                        //,'editor'
+                        //,'author'
+                        ,'thumbnail'
+                        ,'post-thumbnails'
+                        //,'excerpt' 
+                        //,'trackbacks'
+                        //,'custom-fields'
+                        //,'comments' 
+                        ,'revisions'
+                        ,'page-attributes');
+    $args = array(
+     'lable'               => 'Alle Firmen Referenzen',
+     'labels'              => $labels,
+     'public'              => true,
+     'exclude_from_search' => true,
+     'publicly_queryable'  => true,
+     'show_ui'             => true,
+     'show_in_nav_menus'   => true,
+     'show_in_menu'        => true,
+     'show_in_admin_bar'   => true,
+     '_builtin'            => false,
+     'menu_position'       => 20,
+     'menu_icon'           => 'dashicons-admin-appearance',
+     'capability_type'     => 'post',
+     'hierarchical'        => false,
+     'supports'            => $supports,
+     'has_archive'         => true,
+     'rewrite'             => array( 'slug' => 'links' ),
+     'query_var'           => true,
+        
+    'labels' => $labels,
+    'public' => true,
+    'publicly_queryable' => true,
+    'show_ui' => true, 
+    'show_in_menu' => true, 
+    'query_var' => true,
+    'rewrite' => true,
+    'capability_type' => 'post',
+    'has_archive' => true, 
+    'hierarchical' => false,
+    'menu_position' => null,
+     ); 
+    register_post_type( 'firmenReferenz', $args );
+    // flush_rewrite_rules();
+}
+
+add_action( 'init', 'cpt_firmenReferenz', 0 );
+
+add_action( 'admin_init', 'cpt_firmenReferenz_meta_boxen');
+add_action( 'save_post', 'cpt_firmenReferenz_daten_speichern');
+
+function cpt_firmenReferenz_meta_boxen()
+{
+    add_meta_box("url-meta", "URL", "cpt_firmenReferenz_feld_url","firmenReferenz","normal","high");
+    add_meta_box("kurzbeschreibung-meta", "Kurzbeschreibung (max. 100 Zeichen)", "cpt_firmenReferenz_feld_kurzbeschreibung","firmenReferenz","normal","high");
+    add_meta_box("email-meta", "E-Mail", "cpt_firmenReferenz_feld_email","firmenReferenz","normal","high");    
+}
+
+
+function cpt_firmenReferenz_feld_url()
+{
+    global $post;
+    $custom = get_post_custom($post->ID);
+    $url = $custom["url"][0];
+    echo '<input name="url" value="'.$url.'"/>';
+}
+function cpt_firmenReferenz_feld_email()
+{
+    global $post;
+    $custom = get_post_custom($post->ID);
+    $email = $custom["email"][0];
+    echo '<input name="email" value="'.$email.'"/>';
+}
+
+function cpt_firmenReferenz_feld_kurzbeschreibung()
+{
+    global $post;
+    $custom = get_post_custom($post->ID);
+    $kurzbeschreibung = $custom["kurzbeschreibung"][0];
+    echo '<textarea maxlength="100" name="kurzbeschreibung">'.$kurzbeschreibung.'</textarea>';
+}
+
+function cpt_firmenReferenz_daten_speichern()
+{
+    global $post;
+    update_post_meta($post->ID, "url", $_POST['url']);
+    update_post_meta($post->ID, "email", $_POST['email']);
+    update_post_meta($post->ID, "kurzbeschreibung", $_POST['kurzbeschreibung']);
+}
+
+
+
+/**
+ * Seitentypen Dokument Referenz
+ */
+
+function cpt_dokumentReferenz() 
+{
+    $labels = array
+    (
+        'name'                  => _x('Dokument Referenzen','post type general name'),
+        'singular_name'         => _x('Dokument Referenz','post type singular name'),
+        'menu_name'             => 'Dokument Referenz',
+        'name_admin_bar'        => 'Alle Dokument Referenzen',
+        'add_new'               => _x('Hinzufügen','Links'),
+        'add_new_item'          => __('Neue Dokument Referenz hinzufügen'),
+        'edit_item'             => __('Dokument Referenz bearbeiten'),
+        'new_item'              => __('Neue Dokument Referenz'),
+        'view_item'             => __('Dokument Referenz ansehen'),
+        'search_items'          => __('Nach Dokument Referenz suchen'),
+        'not_found'             => __('Keine Dokument Referenz gefunden'),
+        'not_fount_in_trash'    => __('Neuee Dokument Referenz im Papierkorb'),
+        'parrent_item_colon'    => ''
+    );
+    $supports = array( 'title'
+                        //,'editor'
+                        //,'author'
+                        ,'thumbnail'
+                        ,'post-thumbnails'
+                        //,'excerpt' 
+                        //,'trackbacks'
+                        //,'custom-fields'
+                        //,'comments' 
+                        ,'revisions'
+                        ,'page-attributes');
+    $args = array(
+     'lable'               => 'Alle Dokument Referenzen',
+     'labels'              => $labels,
+     'public'              => true,
+     'exclude_from_search' => true,
+     'publicly_queryable'  => true,
+     'show_ui'             => true,
+     'show_in_nav_menus'   => true,
+     'show_in_menu'        => true,
+     'show_in_admin_bar'   => true,
+     '_builtin'            => false,
+     'menu_position'       => 20,
+     'menu_icon'           => 'dashicons-admin-appearance',
+     'capability_type'     => 'post',
+     'hierarchical'        => false,
+     'supports'            => $supports,
+     'has_archive'         => true,
+     'rewrite'             => array( 'slug' => 'links' ),
+     'query_var'           => true,
+        
+    'labels' => $labels,
+    'public' => true,
+    'publicly_queryable' => true,
+    'show_ui' => true, 
+    'show_in_menu' => true, 
+    'query_var' => true,
+    'rewrite' => true,
+    'capability_type' => 'post',
+    'has_archive' => true, 
+    'hierarchical' => false,
+    'menu_position' => null,
+     ); 
+    register_post_type( 'dokumentReferenz', $args );
+    // flush_rewrite_rules();
+}
+
+add_action( 'init', 'cpt_dokumentReferenz', 0 );
+
+add_action( 'admin_init', 'cpt_dokumentReferenz_meta_boxen');
+add_action( 'save_post', 'cpt_dokumentReferenz_daten_speichern');
+
+function cpt_dokumentReferenz_meta_boxen()
+{
+   add_meta_box("kurzbeschreibung-meta", "Kurzbeschreibung (max. 100 Zeichen)", "cpt_dokumentReferenz_feld_kurzbeschreibung","dokumentReferenz","normal","high");
+}
+
+function cpt_dokumentReferenz_feld_kurzbeschreibung()
+{
+    global $post;
+    $custom = get_post_custom($post->ID);
+    $kurzbeschreibung = $custom["kurzbeschreibung"][0];
+    echo '<textarea maxlength="100" name="kurzbeschreibung">'.$kurzbeschreibung.'</textarea>';
+}
+
+function cpt_dokumentReferenz_daten_speichern()
+{
+    global $post;
+    update_post_meta($post->ID, "kurzbeschreibung", $_POST['kurzbeschreibung']);
+}
+
+
 ?>

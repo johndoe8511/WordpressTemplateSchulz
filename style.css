@@ -6,21 +6,15 @@ Author: Dennis Berger
 Author URI: 
 */
 
-//@import url('/schulzWebsite/wordpress/wp-content/themes/SchulzDozent/bootstrap/css/bootstrap.css');
-//@import url('bootstrap/css/bootstrap.css') print;
-//@import '/wp-content/themes/SchulzDozent/bootstrap/css/bootstrap.css';
-
-
-
 html                
 { 
     color: #333;  
-    background-color: #D3D3D3 !important;
+    background-color:#D3D3D3 !important;
 }
 body                
 { 
     color: #333;  
-    background-color: #D3D3D3 !important;
+    background-color:#D3D3D3 !important;
     padding-top: 50px; /* sticky header */
     padding-bottom: 30px; /* sticky footer */
     font-size: 14px;
@@ -86,8 +80,8 @@ pre
     line-height: 18.5714px;
 }
 
-#wrapper            { background-color: #D3D3D3;}
-#contentWrapper     { background-color: #D3D3D3;}
+#wrapper            { background-color:#D3D3D3;}
+#contentWrapper     { background-color:#D3D3D3;}
 #header             { /*background-color: 222;*/ /*border: 1px solid #ccc;*/}
 #header .navbar-header .navbar-brand   
 { 
@@ -135,7 +129,28 @@ pre
    margin-top: 15px;
    // border: 1px solid black;
 }
-
+#contentFirmenReferenz
+{
+    background-color: #fff;
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    margin-top: 15px;
+    color: #337ab7;
+   // border: 1px solid black;
+}
+#contentDokumentReferenz
+{
+    background-color: #fff;
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    margin-top: 15px;
+    color: #337ab7;
+   // border: 1px solid black;
+}
 .thumbnail
 {
     //border: 1px solid #000;
@@ -259,6 +274,11 @@ div.imageSchulzWappenLinks
    // z-index: -1;
 }
 
+div#mainImgGroup
+{
+   // padding-top: 10px;
+}
+
 .rounded            {}
 
 .back-to-top        
@@ -327,3 +347,4 @@ div.imageSchulzWappenLinks
 {
     margin-left:10px;
 }
+
