@@ -4,7 +4,6 @@ Template Name: Seite ohne Seitenmenü und ohne Seitennachvervolgung
 */
 ?>
 <?php get_header(); ?>
-
 <div class="container-fluid">
     <div class="row">
         

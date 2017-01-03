@@ -3,12 +3,13 @@
 Template Name: Seite ohne Seitenmenü (Grün)
 */
 ?>
+<?php $backgroundCSS = "#FFEF72"; ?>
 <?php get_header(); ?>
 <link href="<?php echo get_stylesheet_directory_uri() ?>/css/backgroundGreen.php" rel="stylesheet" type="text/css">
 <div class="container-fluid">
     <div class="row">
         <div id="main" class="col-xs-12 col-sm-12 col-md-12">
-             <?php setBackgroundColorDropDownButton('Fachgebiete'); ?>
+            <?php setBackgroundColorDropDownButton('Fachgebiete'); ?>
             <?php if (function_exists('nav_breadcrumb')) nav_breadcrumb(); ?>
             <div id="content" >
                 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>

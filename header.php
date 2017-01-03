@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
+	
+<meta http-equiv="cache-control" content="no-cache" />
 
     <title><?php wp_title(' - ', true, 'right'); ?> <?php bloginfo('name'); ?></title>
     <link rel="icon"  href="<?php bloginfo('template_directory');?>/img/CrestColorTransparent128x128.png">
@@ -21,6 +23,8 @@
         
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri() ?>/style.css" media="screen"  type="text/css">
+    <?php echo testoo();?>
+        <link href="<?php echo get_stylesheet_directory_uri() ?>/css/dynamicCSS.php" rel="stylesheet" type="text/css">
     <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
     
     <!-- JAVASCRIPT -->

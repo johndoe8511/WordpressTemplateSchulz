@@ -54,13 +54,33 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 		} else if ( strcasecmp($item->attr_title, 'disabled' ) == 0 ) {
 			$output .= $indent . '<li role="presentation" class="disabled"><a href="#">' . esc_attr( $item->title ) . '</a>';
 		} else {
-
+                        
 			$class_names = $value = '';
-
 			$classes = empty( $item->classes ) ? array() : (array) $item->classes;
 			$classes[] = 'menu-item-' . $item->ID;
-
-			$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args ) );
+                        
+                        //set parent meu post to set css class for js menu highlighting
+                        //############ CUSTOM START
+                        if(empty($item->post_parent))
+                        {
+                            $parentMenuPost = get_post($item->object_id);
+                        }
+                        else
+                        {
+                            $parentMenuPost = get_post($item->post_parent);
+                        }
+                        $classes[] = 'menu-item-'.$parentMenuPost->post_name;
+                        
+                        global $post;
+                        if( !empty($post->post_parent) 
+                            && $item->object_id == $post->post_parent
+                            && $item->post_title != 'Übersicht')
+                        {
+                            $classes[] = 'active';
+                        }
+                        //############ CUSTOM END
+                        
+                        $class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args ) );
 
 			if ( $args->has_children )
 				$class_names .= ' dropdown';
@@ -69,8 +89,8 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 				$class_names .= ' active';
 
 			$class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
-
-			$id = apply_filters( 'nav_menu_item_id', 'menu-item-'. $item->post_name, $item, $args );
+                       
+			$id = apply_filters( 'nav_menu_item_id', 'menu-item-'. $item->ID, $item, $args );
 			$id = $id ? ' id="' . esc_attr( $id ) . '"' : '';
 
 			$output .= $indent . '<li' . $id . $value . $class_names .'>';
@@ -79,16 +99,22 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 			$atts['title']  = ! empty( $item->title )	? $item->title	: '';
 			$atts['target'] = ! empty( $item->target )	? $item->target	: '';
 			$atts['rel']    = ! empty( $item->xfn )		? $item->xfn	: '';
-
+                        
 			// If item has_children add atts to a.
-			if ( $args->has_children && $depth === 0 ) {
-				$atts['href']   	= '#';
-				$atts['data-toggle']	= 'dropdown';
-				$atts['class']		= 'dropdown-toggle';
-                                $atts['id']		= !empty( $item->title ) ? 'NavLink_'.$item->title	: 'NavLink_EmptyTitel_ID'.$item->ID;
-				$atts['aria-haspopup']	= 'true';
-			} else {
-				$atts['href'] = ! empty( $item->url ) ? $item->url : '';
+			if ( $args->has_children && $depth === 0 ) 
+                        {
+                            $atts['href']           = '#';
+                            $atts['data-toggle']    = 'dropdown';
+                            $atts['class']          = 'dropdown-toggle ';
+                            //set parent meu post to set css class for js menu highlighting
+                            //############ CUSTOM START
+                            $atts['id']             = !empty( $item->title ) ? 'NavLink_'.str_replace(' ', '_', $item->title)	: 'NavLink_EmptyTitel_ID'.$item->ID;
+                             //############ CUSTOM END
+                            $atts['aria-haspopup']  = 'true';
+			} 
+                        else 
+                        {
+                            $atts['href'] = ! empty( $item->url ) ? $item->url : '';
 			}
 
 			$atts = apply_filters( 'nav_menu_link_attributes', $atts, $item, $args );
@@ -120,6 +146,8 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 			$item_output .= $args->after;
 
 			$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
+                        
+                       
 		}
 	}
 

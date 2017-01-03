@@ -8,6 +8,7 @@ $query = new WP_Query(array(
     'post_status' => 'publish',
     'orderby' => 'menu_order',
     'order'   => 'ASC',
+    'posts_per_page'   => '100',
 ));
 ?>
 <?php get_header(); ?>
@@ -40,7 +41,8 @@ $query = new WP_Query(array(
                             <?php if(!empty($custom_fields["email"][0]))
                             { ?>
                                 <a href="mailto:<?php echo $custom_fields["email"][0]?>" class="btn btn-default" role="button">E-Mail</a>
-                        </p><?php } ?>
+                            <?php } ?>
+                        </p>
                     </div><!-- caption --> 
                 </div><!-- thumbnail --> 
                     <?php                  

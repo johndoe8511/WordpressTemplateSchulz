@@ -30,7 +30,7 @@ if ( function_exists('register_nav_menus') )
 /**
  * get child page html sidemenü navigation
  */
-function getChildNavigationSidemenü()
+function getChildNavigationSideMenu()
 {
     if(is_page())
     {
@@ -45,11 +45,65 @@ function getChildNavigationSidemenü()
         ); 
         $currentPageChildrenArray = get_pages($args); 
        
-        createHTMLPageSidemenuNavigaion($currentPageChildrenArray);
+        createHTMLPageSideMenuChildNavigaion($currentPageChildrenArray);
 
         // echo what we get back from WP to the browser
         //echo '<pre>' . print_r( $currentPageChildrenArray, true ) . '</pre>';
         
+    }
+}
+//sidemenü
+/**
+ * get same page html sidemenü navigation
+ */
+function getNavigationSideMenu()
+{
+    if(is_page())
+    {
+        global $post;
+        
+        $args = array(
+            'sort_order' => 'asc',
+            'sort_column' => 'post_title',
+            'parent' => $post->post_parent,
+            'post_type' => 'page',
+            'post_status' => 'publish'
+        ); 
+   
+        $currentPageChildrenArray = get_pages($args); 
+
+        createHTMLPageSideMenuNavigaion($currentPageChildrenArray);
+
+        // echo what we get back from WP to the browser
+        //echo '<pre>' . print_r( $currentPageChildrenArray, true ) . '</pre>';
+        
+    }
+}
+/**
+ * create sidbar navigation HTML div element
+ * @global type $post
+ * @param type $pageChildrenArray
+ */
+function createHTMLPageSideMenuNavigaion($pageChildrenArray)
+{
+    global $post;
+    if(!empty($pageChildrenArray))
+    {
+        ?>
+            <div class="list-group">
+                <a href="#" class="list-group-item sidebarHead">Module</a>
+        <?php
+        
+        foreach ($pageChildrenArray as $child) 
+        {
+            if($child->post_parent == $post->post_parent)
+            { ?>
+                <a href="<?php echo get_permalink($child); ?>" class="list-group-item <?php echo ($child->ID == $post->ID ? "sidebarHighlightFocus": "" ); ?>"><?php echo $child->post_title?></a>
+            <?php }
+        }
+        ?>
+            </div>
+        <?php
     }
 }
 
@@ -58,7 +112,7 @@ function getChildNavigationSidemenü()
  * @global type $post
  * @param type $pageChildrenArray
  */
-function createHTMLPageSidemenuNavigaion($pageChildrenArray)
+function createHTMLPageSideMenuChildNavigaion($pageChildrenArray)
 {
     global $post;
     if(!empty($pageChildrenArray))
@@ -77,12 +131,7 @@ function createHTMLPageSidemenuNavigaion($pageChildrenArray)
             </div>
         <?php
     }
-    else
-    {
-        echo "Keine Child Pages";
-    }
 }
-
 /**
  * get wordpress breadcrumps
  * @global type $post
@@ -266,9 +315,13 @@ function setBackgroundColorDropDownButton($comparedPostName = '')
     }
 }
 
-/**
- * Seitentypen Link
- */
+/**********************************************************************************
+ * ********************************************************************************
+ * ********************************************************************************
+ * PostType: Link
+ * ********************************************************************************
+ * ********************************************************************************
+ *********************************************************************************/
 
 function cpt_links() 
 {
@@ -379,10 +432,61 @@ function cpt_links_daten_speichern()
     update_post_meta($post->ID, "kurzbeschreibung", $_POST['kurzbeschreibung']);
 }
 
+// ADD NEW COLUMN
+function cpt_links_columns_head($columns) 
+{
+     $columns = array(
+                        "cb" => "<inpput type\"checkbox\" />",
+                        "title" => "Titel",
+                        "kurzbeschreibung" => "Kurzbeschreibung",
+                        "url" => "URL",
+                        "email" => "E-Mail",
+                        "image" => __('Featured Image'),
+                        "author" => "Author",
+                        "date" => "Datum",
+    );
+    return $columns;
+}
+ 
+// SHOW THE FEATURED IMAGE
+function cpt_links_columns_content($column_name, $post_ID) {
+    global $post;
+    switch($column_name)
+    {
+        case 'image':
+            $post_thumbnail_id = get_post_thumbnail_id($post_ID);
+            if ($post_thumbnail_id) 
+            {
+              $post_thumbnail_img = wp_get_attachment_image_src( $post_thumbnail_id, 'thumbnail' );
+              echo '<img width="180" src="' . $post_thumbnail_img[0] . '" />';
+            }
+            break;
+        case 'kurzbeschreibung':
+            $custom = get_post_custom();
+            echo $custom['kurzbeschreibung'][0];
+            break;
+        case 'url':
+            $custom = get_post_custom();
+            echo $custom['url'][0];
+            break;
+        case 'email':
+            $custom = get_post_custom();
+            echo $custom['email'][0];
+            break;
+    }
+   
+}
+add_filter('manage_links_posts_columns', 'cpt_links_columns_head');
+add_action('manage_links_posts_custom_column', 'cpt_links_columns_content', 10, 2);
 
-/**
- * Seitentypen Firmen Referenz
- */
+
+/**********************************************************************************
+ * ********************************************************************************
+ * ********************************************************************************
+ * PostType: Firmen Referenz
+ * ********************************************************************************
+ * ********************************************************************************
+ *********************************************************************************/
 
 function cpt_firmenReferenz() 
 {
@@ -430,7 +534,7 @@ function cpt_firmenReferenz()
      'hierarchical'        => false,
      'supports'            => $supports,
      'has_archive'         => true,
-     'rewrite'             => array( 'slug' => 'links' ),
+     'rewrite'             => array( 'slug' => 'firmenreferenz' ),
      'query_var'           => true,
         
     'labels' => $labels,
@@ -493,11 +597,61 @@ function cpt_firmenReferenz_daten_speichern()
     update_post_meta($post->ID, "kurzbeschreibung", $_POST['kurzbeschreibung']);
 }
 
+// ADD NEW COLUMN
+function cpt_firmenReferenz_columns_head($columns) 
+{
+     $columns = array(
+                        "cb" => "<inpput type\"checkbox\" />",
+                        "title" => "Titel",
+                        "kurzbeschreibung" => "Kurzbeschreibung",
+                        "url" => "URL",
+                        "email" => "E-Mail",
+                        "image" => __('Featured Image'),
+                        "author" => "Author",
+                        "date" => "Datum",
+    );
+    return $columns;
+}
+ 
+// SHOW THE FEATURED IMAGE
+function cpt_firmenReferenz_columns_content($column_name, $post_ID) {
+    global $post;
+    switch($column_name)
+    {
+        case 'image':
+            $post_thumbnail_id = get_post_thumbnail_id($post_ID);
+            if ($post_thumbnail_id) 
+            {
+              $post_thumbnail_img = wp_get_attachment_image_src( $post_thumbnail_id, 'thumbnail' );
+              echo '<img width="180" src="' . $post_thumbnail_img[0] . '" />';
+            }
+            break;
+        case 'kurzbeschreibung':
+            $custom = get_post_custom();
+            echo $custom['kurzbeschreibung'][0];
+            break;
+        case 'url':
+            $custom = get_post_custom();
+            echo $custom['url'][0];
+            break;
+        case 'email':
+            $custom = get_post_custom();
+            echo $custom['email'][0];
+            break;
+    }
+   
+}
+add_filter('manage_firmenreferenz_posts_columns', 'cpt_firmenReferenz_columns_head');
+add_action('manage_firmenreferenz_posts_custom_column', 'cpt_firmenReferenz_columns_content', 10, 2);
 
 
-/**
- * Seitentypen Dokument Referenz
- */
+/**********************************************************************************
+ * ********************************************************************************
+ * ********************************************************************************
+ * PostType: Dokument Referenz
+ * ********************************************************************************
+ * ********************************************************************************
+ *********************************************************************************/
 
 function cpt_dokumentReferenz() 
 {
@@ -514,7 +668,7 @@ function cpt_dokumentReferenz()
         'view_item'             => __('Dokument Referenz ansehen'),
         'search_items'          => __('Nach Dokument Referenz suchen'),
         'not_found'             => __('Keine Dokument Referenz gefunden'),
-        'not_fount_in_trash'    => __('Neuee Dokument Referenz im Papierkorb'),
+        'not_fount_in_trash'    => __('Neue Dokument Referenz im Papierkorb'),
         'parrent_item_colon'    => ''
     );
     $supports = array( 'title'
@@ -545,7 +699,7 @@ function cpt_dokumentReferenz()
      'hierarchical'        => false,
      'supports'            => $supports,
      'has_archive'         => true,
-     'rewrite'             => array( 'slug' => 'links' ),
+     'rewrite'             => array( 'slug' => 'dokumentReferenz' ),
      'query_var'           => true,
         
     'labels' => $labels,
@@ -571,7 +725,7 @@ add_action( 'save_post', 'cpt_dokumentReferenz_daten_speichern');
 
 function cpt_dokumentReferenz_meta_boxen()
 {
-   add_meta_box("kurzbeschreibung-meta", "Kurzbeschreibung (max. 100 Zeichen)", "cpt_dokumentReferenz_feld_kurzbeschreibung","dokumentReferenz","normal","high");
+   add_meta_box("kurzbeschreibung-meta", "Kurzbeschreibung (max. 120 Zeichen)", "cpt_dokumentReferenz_feld_kurzbeschreibung","dokumentReferenz","normal","high");
 }
 
 function cpt_dokumentReferenz_feld_kurzbeschreibung()
@@ -579,7 +733,7 @@ function cpt_dokumentReferenz_feld_kurzbeschreibung()
     global $post;
     $custom = get_post_custom($post->ID);
     $kurzbeschreibung = $custom["kurzbeschreibung"][0];
-    echo '<textarea maxlength="100" name="kurzbeschreibung">'.$kurzbeschreibung.'</textarea>';
+    echo '<textarea maxlength="120" name="kurzbeschreibung">'.$kurzbeschreibung.'</textarea>';
 }
 
 function cpt_dokumentReferenz_daten_speichern()
@@ -588,5 +742,143 @@ function cpt_dokumentReferenz_daten_speichern()
     update_post_meta($post->ID, "kurzbeschreibung", $_POST['kurzbeschreibung']);
 }
 
+// ADD NEW COLUMN
+function cpt_dokumentReferenz_columns_head($columns) 
+{
+     $columns = array(
+                        "cb" => "<inpput type\"checkbox\" />",
+                        "title" => "Titel",
+                        "kurzbeschreibung" => "Kurzbeschreibung",
+                        "image" => __('Featured Image'),
+                        "author" => "Author",
+                        "date" => "Datum",
+    );
+    return $columns;
+}
+ 
+// SHOW THE FEATURED IMAGE
+function cpt_dokumentReferenz_columns_content($column_name, $post_ID) {
+    global $post;
+    switch($column_name)
+    {
+        case 'image':
+            $post_thumbnail_id = get_post_thumbnail_id($post_ID);
+            if ($post_thumbnail_id) 
+            {
+              $post_thumbnail_img = wp_get_attachment_image_src( $post_thumbnail_id, 'thumbnail' );
+              echo '<img width="180" src="' . $post_thumbnail_img[0] . '" />';
+            }
+            break;
+        case 'kurzbeschreibung':
+            $custom = get_post_custom();
+            echo $custom['kurzbeschreibung'][0];
+            break;
+    }
+   
+}
+add_filter('manage_dokumentreferenz_posts_columns', 'cpt_dokumentReferenz_columns_head');
+add_action('manage_dokumentreferenz_posts_custom_column', 'cpt_dokumentReferenz_columns_content', 10, 2);
 
+
+/**********************************************************************************
+ * ********************************************************************************
+ * ********************************************************************************
+ * PostType: Beruflicher Werdegang
+ * ********************************************************************************
+ * ********************************************************************************
+ *********************************************************************************/
+
+function cpt_beruflicherWerdegang() 
+{
+    $labels = array
+    (
+        'name'                  => _x('Beruflicher Werdegang','post type general name'),
+        'singular_name'         => _x('Beruflicher Werdegang','post type singular name'),
+        'menu_name'             => 'Beruflicher Werdegang',
+        'name_admin_bar'        => 'Alle Daten des Beruflicher Werdegangs',
+        'add_new'               => _x('Hinzufügen','Links'),
+        'add_new_item'          => __('Neuer Beruflicher Werdegang hinzufügen'),
+        'edit_item'             => __('Beruflicher Werdegang bearbeiten'),
+        'new_item'              => __('Neuer Beruflicher Werdegang'),
+        'view_item'             => __('Beruflicher Werdegang ansehen'),
+        'search_items'          => __('Nach Beruflicher Werdegang suchen'),
+        'not_found'             => __('Keine Beruflicher Werdegang gefunden'),
+        'not_fount_in_trash'    => __('Neuer Beruflicher Werdegang im Papierkorb'),
+        'parrent_item_colon'    => ''
+    );
+    $supports = array( 'title'
+                        ,'editor'
+                        //,'author'
+                        //,'thumbnail'
+                        //,'post-thumbnails'
+                        //,'excerpt' 
+                        //,'trackbacks'
+                        //,'custom-fields'
+                        //,'comments' 
+                        ,'revisions'
+                        ,'page-attributes');
+    $args = array(
+     'lable'               => 'Alle Daten des Beruflicher Werdegangs',
+     'labels'              => $labels,
+     'public'              => true,
+     'exclude_from_search' => true,
+     'publicly_queryable'  => true,
+     'show_ui'             => true,
+     'show_in_nav_menus'   => true,
+     'show_in_menu'        => true,
+     'show_in_admin_bar'   => true,
+     '_builtin'            => false,
+     'menu_position'       => 20,
+     'menu_icon'           => 'dashicons-admin-appearance',
+     'capability_type'     => 'post',
+     'hierarchical'        => false,
+     'supports'            => $supports,
+     'has_archive'         => true,
+     'rewrite'             => array( 'slug' => 'beruflicherWerdegang' ),
+     'query_var'           => true,
+        
+    'labels' => $labels,
+    'public' => true,
+    'publicly_queryable' => true,
+    'show_ui' => true, 
+    'show_in_menu' => true, 
+    'query_var' => true,
+    'rewrite' => true,
+    'capability_type' => 'post',
+    'has_archive' => true, 
+    'hierarchical' => false,
+    'menu_position' => null,
+     ); 
+    register_post_type( 'beruflicherWerdegang', $args );
+    // flush_rewrite_rules();
+}
+
+add_action( 'init', 'cpt_beruflicherWerdegang', 0 );
+
+// ADD NEW COLUMN
+function cpt_beruflicherWerdegang_columns_head($columns) 
+{
+     $columns = array(
+                        "cb" => "<inpput type\"checkbox\" />",
+                        "title" => "Titel",
+                        "author" => "Author",
+                        "date" => "Datum",
+    );
+    return $columns;
+}
+add_filter('manage_beruflicherwerdegang_posts_columns', 'cpt_beruflicherWerdegang_columns_head');
+
+/**
+ * Kommentar Menupunkt im admin Bereich entfernen
+ */
+add_action( 'admin_menu', 'remove_admin_menus' );
+function remove_admin_menus() 
+{
+    remove_menu_page( 'edit-comments.php' );
+}
+
+function testoo()
+{
+    return '#FFEF72';
+}
 ?>

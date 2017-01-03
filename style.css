@@ -5,7 +5,10 @@ Description: Template Schulz Dozent Website
 Author: Dennis Berger
 Author URI: 
 */
-
+.parent 
+{
+      background-color:#ff0000 !important;
+}
 html                
 { 
     color: #333;  
@@ -15,7 +18,7 @@ body
 { 
     color: #333;  
     background-color:#D3D3D3 !important;
-    padding-top: 50px; /* sticky header */
+    padding-top: 30px; /* sticky header */
     padding-bottom: 30px; /* sticky footer */
     font-size: 14px;
     font-family: Verdana, Geneva, sans-serif;
@@ -36,18 +39,86 @@ h2
     font-style: normal;
     font-variant: normal;
     font-weight: 500;
-    line-height: 26.4px;
+    line-height: 30.4px;
     margin-bottom: 20px;
+    color: #337ab7;
 }
 h3 
 {
     font-family: Verdana, Geneva, sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+    line-height: 15.4px;
+    color: #337ab7;
+    padding-bottom: 10px;
+}
+.caption h3 
+{
+    color: #333;
+    font-family: Verdana, Geneva, sans-serif;
     font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 15.4px;
+    font-variant: normal;
+}
+#entryTimeframe h3 
+{
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 15.4px;
+    font-variant: normal;
+    color: #337ab7;
+}
+h4 
+{
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+    line-height: 15.4px;
+    color: #23527c;
+}
+
+h5
+{
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 15px;
     font-style: normal;
     font-variant: normal;
     font-weight: 500;
     line-height: 15.4px;
 }
+
+h6 
+{
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+    line-height: 15.4px;
+    color: #23527c;
+    
+}
+
+blockquote {
+  background: #f9f9f9;
+  border-left: 10px solid #337ab7;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+
+blockquote p {
+  display: inline;
+}
+
 .entry p 
 {
     text-align: justify;
@@ -81,7 +152,12 @@ pre
 }
 
 #wrapper            { background-color:#D3D3D3;}
-#contentWrapper     { background-color:#D3D3D3;}
+#contentWrapper     
+{ 
+    background-color:#D3D3D3;
+    padding-left: 0px;
+    padding-right: 0px;
+}
 #header             { /*background-color: 222;*/ /*border: 1px solid #ccc;*/}
 #header .navbar-header .navbar-brand   
 { 
@@ -110,24 +186,30 @@ pre
     text-decoration: none;
     background-color: #23527c;  /*change color of links in drop down here*/
 }
-
-#header .navbar-nav > li > .dropdown-menu
+#mainImgGroup
 {
-   // border: 1px solid black;
+    padding-top: 10px;
 }
-#content            
+
+.breadcrumb
+{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+#content
 {
     background-color: #fff;
     border-radius: 5px;
-    padding: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 5px;
     padding-top: 15px;
-   // border: 1px solid black;
+   
 }
 
-#contentLinks          
+#contentReferenz
 {
    margin-top: 15px;
-   // border: 1px solid black;
 }
 #contentFirmenReferenz
 {
@@ -138,7 +220,6 @@ pre
     padding-bottom: 1px;
     margin-top: 15px;
     color: #337ab7;
-   // border: 1px solid black;
 }
 #contentDokumentReferenz
 {
@@ -149,11 +230,6 @@ pre
     padding-bottom: 1px;
     margin-top: 15px;
     color: #337ab7;
-   // border: 1px solid black;
-}
-.thumbnail
-{
-    //border: 1px solid #000;
 }
 
 #content h2         
@@ -209,6 +285,36 @@ pre
    align: center;
 }
 
+.White
+{
+    background-color: #fff !important;
+   border-radius: 5px !important;
+   padding-top: 0px !important; 
+   margin-bottom: 15px !important;
+   padding-right: 10px !important;
+}
+
+#entryTimeframe    
+{ 
+   background-color: #fff;
+   border-radius: 5px;
+   padding-top: 0px !important; 
+   margin-bottom: 15px !important;
+   padding-right: 10px !important;
+   
+   vertical-align: text-top !important;
+   
+}
+
+#entryText     
+{ 
+   background-color: #fff;
+   border-radius: 5px;
+   vertical-align: top;
+   align-content: center;
+   margin-bottom: 15px !important;
+}
+
 #entry p      
 { 
     padding-right: 10px;
@@ -218,41 +324,35 @@ pre
 {
     color: #fff;
     text-decoration: none;
-    background-color: #337ab7;
+    background-color: #337ab7 !important;
 }
 
-
-.breadcrumb
+#sidebar a.list-group-item:active
 {
-    //border: 1px solid black;
+    color: #fff;
+    text-decoration: none;
+    background-color: #23527c;
 }
+
+
+
+.sidebarHighlightFocus
+{
+    color: #fff !important;
+    text-decoration: none;
+    background-color: #23527c !important;
+}
+
 div.imageSchulzWappen_H  
 {
     background:url("/SchulzWebsite/wordpress/wp-content/themes/WordpressTemplateSchulz/img/WappenColorTransparent.png");
     background-position:center;
     background-size: contain;
     background-repeat: no-repeat;
-    //position: absolute;
     top: 80px;
     right: 50px;
     width: inherit;
     height: 300px;
-    //z-index: 0;
-
-}
-div.imageSchulzWappenContact  
-{
-    //background:url("/SchulzWebsite/wordpress/wp-content/themes/WordpressTemplateSchulz/img/CrestColorTransparentWithNameOpacity.png");
-    //background-position-x: right;
-    //background-position-y: top;
-    //background-size: 200px ;
-    //background-repeat: no-repeat;
-    //position: absolute;
-    //top: 100px;
-    //margin-left: 150px;
-    //width: inherit;
-    //height: 500px;*/
-    //z-index: 0;
 
 }
 
@@ -262,21 +362,7 @@ div.imageSchulzWappenLinks
     background-position:center;
     background-size: contain;
     background-repeat: no-repeat;
-   // position:absolute;
-
-    //top: -50%;
-    //right: -50%;
-   // left: 50%;
-    //margin-left: -150px;
-   // width: 300px;
     height: 500px;
-
-   // z-index: -1;
-}
-
-div#mainImgGroup
-{
-   // padding-top: 10px;
 }
 
 .rounded            {}
@@ -347,4 +433,3 @@ div#mainImgGroup
 {
     margin-left:10px;
 }
-

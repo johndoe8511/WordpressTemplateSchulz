@@ -4,7 +4,7 @@
 
 
     <!-- <h2>Menü</h2> -->
-    <?php getChildNavigationSideMenu(); ?>
+    <?php getNavigationSidemenu(); ?>
 
  
 <?php endif; ?>

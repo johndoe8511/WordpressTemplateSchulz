@@ -3,7 +3,9 @@
 Template Name: Seite ohne Seitenmenü
 */
 ?>
-<?php get_header(); ?>
+<?php 
+
+get_header(); ?>
 
 <div class="container-fluid">
     <div class="row">

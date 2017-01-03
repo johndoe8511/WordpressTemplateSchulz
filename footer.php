@@ -65,3 +65,6 @@
         </div><!-- wrapper -->
     </body>
 </html>
+<script>
+    $('.navbar-collapse li a.selected').parents('li').addClass('parent');
+    </script>
