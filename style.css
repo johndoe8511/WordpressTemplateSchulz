@@ -1,28 +1,639 @@
 /*
-Theme Name: DozentSchulzBootstrapWP
-Theme URI: http://bootstrapwp.rachelbaker.me
-Author: Rachel Baker
-Author URI: http://www.rachelbaker.me
-Description: A semantic HTML/CSS framework base theme for WordPress Developers ported from Twitter Bootstrap
-Version: 1.0
-=======
-License: GNU General Public License
-License URI: license.txt
-
-This theme, like WordPress, is licensed under the GPL.
-
-The development of BootstrapWP was powered by Sublime Text 2 and lots of Diet Coke.
-Use this starter theme to make something cool.  Please share the results with me via Twitter @rachelbaker.
-Enjoy!
-
+Theme Name: Dozent Schulz
+Theme URI: 
+Description: Template Schulz Dozent Website
+Author: Dennis Berger
+Author URI: 
 */
-/********************************************************
+.parent 
+{
+      background-color:#ff0000 !important;
+}
+html                
+{ 
+    color: #333;  
+    background-color:#D3D3D3 !important;
+}
+body                
+{ 
+    color: #333;  
+    background-color:#D3D3D3 !important;
+    padding-top: 30px; /* sticky header */
+    padding-bottom: 30px; /* sticky footer */
+    font-size: 14px;
+    font-family: Verdana, Geneva, sans-serif;
+    overflow-y: scroll;
+}
+h1 
+{
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 28px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+    line-height: 34.4px;
+}
+h2
+{
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+    line-height: 30.4px;
+    margin-bottom: 20px;
+    
+    color: #fff;
+    color: #337ab7 !important;
+}
+h3 
+{
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+    line-height: 15.4px;
+    color: #337ab7;
+    padding-bottom: 10px;
+}
+.caption h3 
+{
+    color: #333;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 15.4px;
+    font-variant: normal;
+}
+.entryTimeframe h3 
+{
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 15.4px;
+    font-variant: normal;
+    color: #337ab7;
+}
 
-Comfortable with LESS?  Check out the /assets/css/less folder where the bootstrapwp.less file is the master complier
+h3 
+{
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+    line-height: 15.4px;
+    color: #337ab7;
+    padding-bottom: 10px;
+}
+h4 
+{
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+    line-height: 20.4px;
+    color: #23527c;
+}
 
-Not comfortable with LESS?  You can override the compiled bootstrapwp.css file by adding custom styles here.
--------------------------------------------------- */
+h5
+{
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 15px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+    line-height: 15.4px;
+}
+
+h6 
+{
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+    line-height: 15.4px;
+    color: #23527c;
+    
+}
+
+blockquote 
+{
+  background: #fff; /*#f9f9f9;*/
+  border-left: 10px solid #337ab7;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+
+blockquote p {
+  display: inline;
+}
+
+.entry p 
+{
+    text-align: justify;
+}
+p 
+{
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 20px;
+}
+blockquote 
+{
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 21px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 30px;
+}
+pre 
+{
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 18.5714px;
+}
+
+#wrapper            
+{ 
+    background-color:#D3D3D3;
+}
+#contentWrapper     
+{ 
+    background-color:#D3D3D3;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-top: 30px;
+}
+#header             { /*background-color: 222;*/ /*border: 1px solid #ccc;*/}
+#header .navbar-header .navbar-brand   
+{ 
+    margin: 0px; 
+    padding: 0px;
+    height: 50px; 
+    width: 36px;
+}
+#header .navbar-header .navbar-brand img 
+{ 
+    padding-top: 2px;
+    max-height: 48px; 
+
+}
+#header .dropdown-menu > li > a:hover 
+{
+    color: #fff;
+    text-decoration: none;
+    background-color: #337ab7;  /*change color of links in drop down here*/
+}
+
+#header .dropdown-menu > .active > a,
+#header .dropdown-menu > li > a:focus 
+{
+    color: #fff;
+    text-decoration: none;
+    background-color: #23527c;  /*change color of links in drop down here*/
+}
+#mainImgGroup
+{
+    padding-top: 10px;
+}
+
+.breadcrumb
+{
+    margin-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 0px;
+    border: 1px solid #ddd;
+    background-color: #eaeaea;
+}
+
+#main .breadcrumb
+{
+    margin-top: 0px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 20px;
+}
+#content
+{
+    background-color: #fff;
+    border-radius: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 5px;
+    padding-top: 15px;
+    border: 1px solid #ddd;
+   
+}
+#contentCuriculum
+{
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px !important;
+    padding-top: 0px !important; 
+    margin-bottom: 15px !important;
+    padding-right: 10px !important;
+}
+
+#contentTest
+{
+    background-color: #fff;
+    border-radius: 5px;
+   /* padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 5px;
+    padding-top: 15px;*/
+    border: 1px solid #ddd;
+   
+}
+.contentHead
+{
+    color: #337ab7 !important;
+    background-color: #eaeaea;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    border-bottom: 1px solid #ddd;
+}
+.contentHead
+{
+    color: #337ab7 !important;
+    background-color: #eaeaea;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.contentHead h2
+{
+    margin: 0px;
+    padding: 0px; 
+}
+#entryContact > h2
+{
+    border-bottom: 1px solid #ddd;
+}
+.contentFooter
+{
+    color: #337ab7 !important;
+    background-color: #eaeaea;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top: 1px solid #ddd;
+    padding-left: 5px;
+    padding-right: 15px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    text-align: right;
+    
+}
+
+.contentFooterInfo
+{
+    color: #337ab7 !important;
+    background-color: #eaeaea;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top: 1px solid #ddd;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    text-align: left;  
+}
+
+.contentReferenz
+{
+   margin-top: 15px;
+}
+#contentReferenzHeadline
+{
+    background-color: #fff;
+    border-radius: 5px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    margin-top: 15px;
+    color: #337ab7;
+    border: 1px solid #ddd;
+    background-color: #eaeaea;
+}
+
+#content h2         
+{ 
+    margin-top: 0px;
+    color: #337ab7;
+}
+#searchparameter    
+{ 
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#searchparameter p  
+{ 
+    font-size: 9pt;
+}
+#sidebar            
+{ 
+    padding: 0px; 
+    padding-top: 20px;
+    float: left; /*background-color: #eee;*/
+}
+#sidebar .list-group            
+{ 
+   /* border: 1px solid black;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;*/
+}
+#sidebar a.list-group-item:hover
+{
+    color: #fff;
+    text-decoration: none;
+    background-color: #337ab7 !important;
+}
+
+#sidebar a.list-group-item:active
+{
+    color: #fff;
+    text-decoration: none;
+    background-color: #23527c;
+}
 
 
-footer div.container   {border: 1px solid; border-color: #aaa;}
-.container   {border: 1px solid; border-color: #aaa;}
+
+.sidebarHighlightFocus
+{
+    color: #fff !important;
+    text-decoration: none;
+    background-color: #23527c !important;
+}
+.sidebarHead
+{
+    color: #337ab7 !important;
+    text-decoration: none;
+    background-color: #eaeaea !important;
+}
+#main               
+{ 
+    padding: 20px; /*background-color: #ddd;*/
+    padding-right: 0px;
+}
+#mainSearch         { margin-bottom: 20px; /*background-color: #ddd;*/}
+#footer             { padding-top: 20px; /*background-color: #fff;*/}
+#footer #copyright:hover
+{
+    color: #fff;
+    text-decoration: none;
+    background-color: #337ab7;
+}
+#entry
+{
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    
+}
+
+#entryContact       
+{ 
+    padding-bottom: 15px;
+}
+#contentContactMap iframe
+{
+    padding-top: 15px;
+    padding-right: 0px;
+}
+
+.entryDokumentReferenz
+{ 
+   background-color: #fff;
+   border-radius: 5px;
+   width: 100%;
+   min-height: 450px;
+   padding: 15px;
+   float: left;
+   text-align: left;
+   position:relative;                 /* added */
+}
+.entryFirmenReferenz
+{ 
+   background-color: #fff;
+   border-radius: 5px;
+   width: 100%;
+   min-height: 330px;
+   padding: 15px;
+   float: left;
+   text-align: left;
+   position:relative;                 /* added */
+}
+.entryLinks     
+{ 
+   background-color: #fff;
+   border-radius: 5px;
+   width: 100%;
+   min-height: 350px;
+   padding: 15px;
+   float: left;
+   text-align: left;
+   position:relative;                 /* added */
+}
+
+.entryLinks > img,
+.entryFirmenReferenz > img,
+.entryDokumentReferenz > img
+{
+   margin-top: 30px;
+    
+}
+.entryFirmenReferenzImg,
+.entryLinksImg
+{
+    height:  135px;
+}
+
+.entryDokumentReferenzImg
+{
+    height:  170px;
+}
+
+.captionBtn
+{
+    vertical-align: bottom;
+    position:absolute;                  /* added */
+    bottom:0;                           /* added */
+    padding-bottom: 5px;
+}
+.no-border
+{
+    border: 0px;
+}
+
+.White
+{
+   background-color: #fff !important;
+  
+}
+.borderRadius
+{
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;            
+}
+.borderRadiusBottom
+{
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;         
+}
+.borderRadiusTop
+{
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;            
+}
+#entryTitle
+{ 
+   border: 1px solid #ddd;
+   margin-bottom: 15px;
+   border-radius: 5px;
+   color: #337ab7 !important;
+   background-color: #eaeaea;
+}
+.entryTimeframe    
+{ 
+   padding-top: 0px !important; 
+}
+
+.entryText
+{ 
+    margin-bottom: 15px !important;
+    font-size: 16px !important;
+}
+.entryText p
+{ 
+    font-size: 16px !important;
+}
+
+#entry p      
+{ 
+    padding-right: 10px;
+
+}
+
+div.imageSchulzWappenLinks  
+{
+    background:url("/SchulzWebsite/wordpress/wp-content/themes/WordpressTemplateSchulz/img/CrestColorTransparentWithName.png");
+    background-position:center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 500px;
+}
+
+.rounded            {}
+
+.back-to-top        
+{ 
+    background: none;
+    margin: 0;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 70px;
+    height: 70px;
+    z-index: 100;
+    display: none;
+    text-decoration: none;
+    color: #337ab7;
+    margin-bottom: 50px;
+    margin-right: 0px;
+}
+.back-to-top i      
+{
+    font-size: 60px;
+}
+.navbar
+{
+    margin: 0px;
+} 
+
+.navbar-default .navbar-nav > .active > a, 
+.navbar-default .navbar-nav > .active > a:hover, 
+.navbar-default .navbar-nav > .active > a:focus,
+.navbar-default .navbar-nav > li > a:hover, 
+.navbar-default .navbar-nav > li > a:focus,
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:focus,
+.navbar-default .navbar-nav > .open > a:hover
+{
+    color: #fff; /*BACKGROUND color for active*/
+    background-color: #23527c;
+}
+
+.navbar-default 
+{
+    background-color: #337ab7;
+    border-color: #030033;
+    border: 0px solid transparent
+}
+
+
+
+.nav > li > a:hover,
+.nav > li > a:focus 
+{
+    text-decoration: none;
+    background-color: silver; /*Change rollover cell color here*/
+}
+
+
+.navbar-default .navbar-nav > li > a 
+{
+    color: white; /*Change active text color here*/
+}   
+
+
+#wpadminbar
+{
+    display: none; /*disable wordpress view of adminbar div*/
+}
+
+.margin-left
+{
+    margin-left:10px;
+}
+
+span.glyphicon-info-sign 
+{
+    font-size: 2.2em;
+    padding-right: 15px;
+}
+
+hr
+{
+    border-top: 1px solid #c7c7c7;
+}

@@ -1,54 +1,23 @@
-<?php
-/**
- * Description: Default Index template to display loop of blog posts
- *
- * @package WordPress
- * @subpackage BootstrapWP
- */
-get_header(); ?>
-<div class="container">
-    <div class="row">
-        <div class="span12">
-            <?php if (function_exists('bootstrapwp_breadcrumbs')) {
-                bootstrapwp_breadcrumbs();
-            } ?>
-        </div><!--/.span12 -->
-    </div><!--/.row -->
 
-    <div class="row content">
-        <div class="span8">
-
-            <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-                <div <?php post_class(); ?>>
-                    <a href="<?php the_permalink(); ?>" title="<?php the_title();?>">
-                        <h3><?php the_title();?></h3>
-                    </a>
-                    <p class="meta">
-                        <?php echo bootstrapwp_posted_on();?>
-                    </p>
-
-                    <div class="row">
-                        <?php // Post thumbnail conditional display.
-                        if ( bootstrapwp_autoset_featured_img() !== false ) : ?>
-                            <div class="span2">
-                                <a href="<?php the_permalink(); ?>" title="<?php  the_title_attribute( 'echo=0' ); ?>">
-                                    <?php echo bootstrapwp_autoset_featured_img(); ?>
-                                </a>
-                            </div>
-                            <div class="span6">
-                        <?php else : ?>
-                            <div class="span8">
-                        <?php endif; ?>
-                                <?php the_excerpt(); ?>
-                            </div>
-                    </div><!-- /.row -->
-
-                    <hr/>
-                </div><!-- /.post_class -->
-            <?php endwhile; endif; ?>
-
-            <?php bootstrapwp_content_nav('nav-below');?>
-        </div>
-
-    <?php get_sidebar('blog'); ?>
-    <?php get_footer(); ?>
+<?php get_header(); ?>
+	
+   <div id="sidebar">
+      <?php get_sidebar(); ?>
+   </div><!-- sidebar -->
+	
+   <div id="main">
+   
+    <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+        <h2> <?php the_title(); ?> </h2>
+	<div class="entry">
+            <?php the_content(); ?>
+         </div>
+      <?php endwhile; ?>
+ 
+         <p align="center"><?php next_posts_link('&laquo; &Auml;ltere Eintr&auml;ge') ?> | <?php previous_posts_link('Neuere Eintr&auml;ge &raquo;') ?></p>
+ 
+    <?php endif; ?>
+   
+   </div><!-- main -->
+ 
+<?php get_footer(); ?>

@@ -1,34 +1,47 @@
-<?php
-/**
- * Template Name: Default Page
- * Description: Page template with a content container and right sidebar.
- *
- * @package WordPress
- * @subpackage BootstrapWP
- */
-get_header(); ?>
-<?php while (have_posts()) : the_post(); ?>
-
-  <div class="container">
+<?php get_header(); ?>
+<div class="container-fluid">
     <div class="row">
-        <div class="span12">
-            <?php if (function_exists('bootstrapwp_breadcrumbs')) {
-            bootstrapwp_breadcrumbs();
-        } ?>
-        </div><!--/.span12 -->
-    </div><!--/.row -->
+         <?php if (function_exists('nav_breadcrumb')) nav_breadcrumb(); ?> <!-- breadcrums -->
+    </div>
+    <div class="row">
+        <div id="sidebar" class="col-xs-12 col-sm-12 col-md-3">
+           <?php 
+           
+                get_sidebar();
+          ?>
+        </div><!-- sidebar --> 
 
-    <header class="page-title">
-        <h1><?php the_title();?></h1>
-    </header>
-
-  <div class="row content">
-    <div class="span8">
-        <?php the_content(); ?>
-        <?php wp_link_pages( array('before' => '<div class="page-links">' . __('Pages:', 'bootstrapwp'), 'after' => '</div>')); ?>
-        <?php edit_post_link(__('Edit', 'bootstrapwp'), '<span class="edit-link">', '</span>'); ?>
-        <?php endwhile; // end of the loop. ?>
-    </div><!-- /.span8 -->
-
-    <?php get_sidebar(); ?>
-    <?php get_footer(); ?>
+        <div id="main" class="col-xs-12 col-sm-12 col-md-9">
+            <div id="contentTest" >
+            <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+                <div class="contentHead">
+                     <h2><?php the_title(); ?></h2>
+                </div>
+               
+                <div id="entry">
+                    <?php the_content(); ?>
+                </div>
+            <?php endwhile; endif; ?>
+            <?php $InfoFooter = get_post_meta($post->ID, 'InfoText', TRUE);
+            if( !empty($InfoFooter))
+            { ?>
+                <div id="footerInfo" class="contentFooterInfo">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td> 
+                                    <span class="glyphicon glyphicon-info-sign"></span>
+                                </td>
+                                <td>
+                                    <?php echo $InfoFooter; ?>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>   
+                </div><!-- main --> 
+            <?php } ?>
+            </div><!-- main --> 
+        </div>
+    </div>
+</div><!-- content --> 
+<?php get_footer(); ?>
