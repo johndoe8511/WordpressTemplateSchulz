@@ -22,8 +22,9 @@ $query = new WP_Query(array(
             {
                 ?><div class="row"><?php 
             } ?>
-            <div id="contentLinks" class="col-xs-12 col-sm-12 col-md-3 col-lg-3" >
-                <div class="thumbnail" id="entryLinks">
+            <div class="contentLinks col-xs-12 col-sm-6 col-md-3 col-lg-3" >
+                <div class="thumbnail entryLinks">
+           
                     <?php
                         //get thumbnail frompost
                         $image_id = get_post_thumbnail_id();
@@ -32,38 +33,24 @@ $query = new WP_Query(array(
                         //get custom fields from post
                         $custom_fields = get_post_custom($post->ID);
                     ?>
-                    <img src="<?php echo $image_url[0];?>" alt="...">
-                    <div class="caption">
-                        <h3><strong><?php echo $post->post_title;?></strong></h3>
+                    <div class="no-border thumbnail entryLinksImg">
+                        <img src="<?php echo $image_url[0];?>">
+                    </div >
+                    <hr></hr>
+                    <div>   
+                        <h4><strong><?php echo $post->post_title;?></strong></h4>
                         <p><?php echo $custom_fields["kurzbeschreibung"][0];?></p>
+                    </div>
+                    <div class="captionBtn">
                         <p>
                             <a href="<?php echo $custom_fields["url"][0];?>" class="btn btn-primary" role="button" target="_blank">Website</a> 
                             <?php if(!empty($custom_fields["email"][0]))
                             { ?>
-                                <a href="mailto:<?php echo $custom_fields["email"][0]?>" class="btn btn-default" role="button">E-Mail</a>
+                                <a href="mailto:<?php echo antispambot($custom_fields["email"][0])?>" class="btn btn-success" role="button">E-Mail</a>
                             <?php } ?>
                         </p>
                     </div><!-- caption --> 
                 </div><!-- thumbnail --> 
-                    <?php                  
-                    /*
-                    echo '<pre>';
-                    print_r($custom_fields);
-                    echo '</pre>';
-                        echo '<pre>';
-                        print_r($post);
-                        echo '</pre>';
-
-                        $post_id = get_the_ID();
-                        echo $post_id;
-                        echo "<br>";
-*/
-                         /*  echo '<pre>';
-                        print_r($image_url);
-                        echo '</pre>';*/
-                        //do something
-
-                    ?>
             </div><!--contentLinks -->
         <?php 
         $i++;

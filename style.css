@@ -22,6 +22,7 @@ body
     padding-bottom: 30px; /* sticky footer */
     font-size: 14px;
     font-family: Verdana, Geneva, sans-serif;
+    overflow-y: scroll;
 }
 h1 
 {
@@ -41,7 +42,9 @@ h2
     font-weight: 500;
     line-height: 30.4px;
     margin-bottom: 20px;
-    color: #337ab7;
+    
+    color: #fff;
+    color: #337ab7 !important;
 }
 h3 
 {
@@ -64,7 +67,7 @@ h3
     line-height: 15.4px;
     font-variant: normal;
 }
-#entryTimeframe h3 
+.entryTimeframe h3 
 {
     font-family: Verdana, Geneva, sans-serif;
     font-size: 14px;
@@ -74,6 +77,18 @@ h3
     font-variant: normal;
     color: #337ab7;
 }
+
+h3 
+{
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+    line-height: 15.4px;
+    color: #337ab7;
+    padding-bottom: 10px;
+}
 h4 
 {
     font-family: Verdana, Geneva, sans-serif;
@@ -81,7 +96,7 @@ h4
     font-style: normal;
     font-variant: normal;
     font-weight: 500;
-    line-height: 15.4px;
+    line-height: 20.4px;
     color: #23527c;
 }
 
@@ -107,8 +122,9 @@ h6
     
 }
 
-blockquote {
-  background: #f9f9f9;
+blockquote 
+{
+  background: #fff; /*#f9f9f9;*/
   border-left: 10px solid #337ab7;
   margin: 1.5em 10px;
   padding: 0.5em 10px;
@@ -151,12 +167,16 @@ pre
     line-height: 18.5714px;
 }
 
-#wrapper            { background-color:#D3D3D3;}
+#wrapper            
+{ 
+    background-color:#D3D3D3;
+}
 #contentWrapper     
 { 
     background-color:#D3D3D3;
     padding-left: 0px;
     padding-right: 0px;
+    margin-top: 30px;
 }
 #header             { /*background-color: 222;*/ /*border: 1px solid #ccc;*/}
 #header .navbar-header .navbar-brand   
@@ -193,8 +213,20 @@ pre
 
 .breadcrumb
 {
+    margin-top: 15px;
     padding-left: 15px;
     padding-right: 15px;
+    margin-bottom: 0px;
+    border: 1px solid #ddd;
+    background-color: #eaeaea;
+}
+
+#main .breadcrumb
+{
+    margin-top: 0px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 20px;
 }
 #content
 {
@@ -204,32 +236,110 @@ pre
     padding-right: 15px;
     padding-bottom: 5px;
     padding-top: 15px;
+    border: 1px solid #ddd;
    
 }
+#contentCuriculum
+{
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px !important;
+    padding-top: 0px !important; 
+    margin-bottom: 15px !important;
+    padding-right: 10px !important;
+}
 
-#contentReferenz
+#contentTest
+{
+    background-color: #fff;
+    border-radius: 5px;
+   /* padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 5px;
+    padding-top: 15px;*/
+    border: 1px solid #ddd;
+   
+}
+.contentHead
+{
+    color: #337ab7 !important;
+    background-color: #eaeaea;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    border-bottom: 1px solid #ddd;
+}
+.contentHead
+{
+    color: #337ab7 !important;
+    background-color: #eaeaea;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.contentHead h2
+{
+    margin: 0px;
+    padding: 0px; 
+}
+#entryContact > h2
+{
+    border-bottom: 1px solid #ddd;
+}
+.contentFooter
+{
+    color: #337ab7 !important;
+    background-color: #eaeaea;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top: 1px solid #ddd;
+    padding-left: 5px;
+    padding-right: 15px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    text-align: right;
+    
+}
+
+.contentFooterInfo
+{
+    color: #337ab7 !important;
+    background-color: #eaeaea;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top: 1px solid #ddd;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    text-align: left;  
+}
+
+.contentReferenz
 {
    margin-top: 15px;
 }
-#contentFirmenReferenz
+#contentReferenzHeadline
 {
     background-color: #fff;
     border-radius: 5px;
-    padding-left: 10px;
     padding-top: 1px;
     padding-bottom: 1px;
     margin-top: 15px;
     color: #337ab7;
-}
-#contentDokumentReferenz
-{
-    background-color: #fff;
-    border-radius: 5px;
-    padding-left: 10px;
-    padding-top: 1px;
-    padding-bottom: 1px;
-    margin-top: 15px;
-    color: #337ab7;
+    border: 1px solid #ddd;
+    background-color: #eaeaea;
 }
 
 #content h2         
@@ -248,8 +358,8 @@ pre
 }
 #sidebar            
 { 
-    padding: 10px; 
-    padding-top: 20px; 
+    padding: 0px; 
+    padding-top: 20px;
     float: left; /*background-color: #eee;*/
 }
 #sidebar .list-group            
@@ -259,66 +369,6 @@ pre
     border-top-right-radius: 4px;
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;*/
-}
-#main               { padding: 20px; /*background-color: #ddd;*/}
-#mainSearch         { margin-bottom: 20px; /*background-color: #ddd;*/}
-#footer             { padding-top: 20px; /*background-color: #fff;*/}
-#footer #copyright:hover
-{
-    color: #fff;
-    text-decoration: none;
-    background-color: #337ab7;
-}
-#entryContact       
-{ 
-    padding-left: 0px;
-    border-color: black;
-    border-top: 1px solid;
-    height:500px;
-}
-
-#entryLinks     
-{ 
-   background-color: #fff;
-   border-radius: 5px;
-   width: 100%;
-   align: center;
-}
-
-.White
-{
-    background-color: #fff !important;
-   border-radius: 5px !important;
-   padding-top: 0px !important; 
-   margin-bottom: 15px !important;
-   padding-right: 10px !important;
-}
-
-#entryTimeframe    
-{ 
-   background-color: #fff;
-   border-radius: 5px;
-   padding-top: 0px !important; 
-   margin-bottom: 15px !important;
-   padding-right: 10px !important;
-   
-   vertical-align: text-top !important;
-   
-}
-
-#entryText     
-{ 
-   background-color: #fff;
-   border-radius: 5px;
-   vertical-align: top;
-   align-content: center;
-   margin-bottom: 15px !important;
-}
-
-#entry p      
-{ 
-    padding-right: 10px;
-
 }
 #sidebar a.list-group-item:hover
 {
@@ -342,17 +392,156 @@ pre
     text-decoration: none;
     background-color: #23527c !important;
 }
-
-div.imageSchulzWappen_H  
+.sidebarHead
 {
-    background:url("/SchulzWebsite/wordpress/wp-content/themes/WordpressTemplateSchulz/img/WappenColorTransparent.png");
-    background-position:center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    top: 80px;
-    right: 50px;
-    width: inherit;
-    height: 300px;
+    color: #337ab7 !important;
+    text-decoration: none;
+    background-color: #eaeaea !important;
+}
+#main               
+{ 
+    padding: 20px; /*background-color: #ddd;*/
+    padding-right: 0px;
+}
+#mainSearch         { margin-bottom: 20px; /*background-color: #ddd;*/}
+#footer             { padding-top: 20px; /*background-color: #fff;*/}
+#footer #copyright:hover
+{
+    color: #fff;
+    text-decoration: none;
+    background-color: #337ab7;
+}
+#entry
+{
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    
+}
+
+#entryContact       
+{ 
+    padding-bottom: 15px;
+}
+#contentContactMap iframe
+{
+    padding-top: 15px;
+    padding-right: 0px;
+}
+
+.entryDokumentReferenz
+{ 
+   background-color: #fff;
+   border-radius: 5px;
+   width: 100%;
+   min-height: 450px;
+   padding: 15px;
+   float: left;
+   text-align: left;
+   position:relative;                 /* added */
+}
+.entryFirmenReferenz
+{ 
+   background-color: #fff;
+   border-radius: 5px;
+   width: 100%;
+   min-height: 330px;
+   padding: 15px;
+   float: left;
+   text-align: left;
+   position:relative;                 /* added */
+}
+.entryLinks     
+{ 
+   background-color: #fff;
+   border-radius: 5px;
+   width: 100%;
+   min-height: 350px;
+   padding: 15px;
+   float: left;
+   text-align: left;
+   position:relative;                 /* added */
+}
+
+.entryLinks > img,
+.entryFirmenReferenz > img,
+.entryDokumentReferenz > img
+{
+   margin-top: 30px;
+    
+}
+.entryFirmenReferenzImg,
+.entryLinksImg
+{
+    height:  135px;
+}
+
+.entryDokumentReferenzImg
+{
+    height:  170px;
+}
+
+.captionBtn
+{
+    vertical-align: bottom;
+    position:absolute;                  /* added */
+    bottom:0;                           /* added */
+    padding-bottom: 5px;
+}
+.no-border
+{
+    border: 0px;
+}
+
+.White
+{
+   background-color: #fff !important;
+  
+}
+.borderRadius
+{
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;            
+}
+.borderRadiusBottom
+{
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;         
+}
+.borderRadiusTop
+{
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;            
+}
+#entryTitle
+{ 
+   border: 1px solid #ddd;
+   margin-bottom: 15px;
+   border-radius: 5px;
+   color: #337ab7 !important;
+   background-color: #eaeaea;
+}
+.entryTimeframe    
+{ 
+   padding-top: 0px !important; 
+}
+
+.entryText
+{ 
+    margin-bottom: 15px !important;
+    font-size: 16px !important;
+}
+.entryText p
+{ 
+    font-size: 16px !important;
+}
+
+#entry p      
+{ 
+    padding-right: 10px;
 
 }
 
@@ -380,14 +569,17 @@ div.imageSchulzWappenLinks
     display: none;
     text-decoration: none;
     color: #337ab7;
-    margin-bottom: 70px;
-    margin-right: 20px;
+    margin-bottom: 50px;
+    margin-right: 0px;
 }
 .back-to-top i      
 {
     font-size: 60px;
 }
- 
+.navbar
+{
+    margin: 0px;
+} 
 
 .navbar-default .navbar-nav > .active > a, 
 .navbar-default .navbar-nav > .active > a:hover, 
@@ -406,6 +598,7 @@ div.imageSchulzWappenLinks
 {
     background-color: #337ab7;
     border-color: #030033;
+    border: 0px solid transparent
 }
 
 
@@ -432,4 +625,15 @@ div.imageSchulzWappenLinks
 .margin-left
 {
     margin-left:10px;
+}
+
+span.glyphicon-info-sign 
+{
+    font-size: 2.2em;
+    padding-right: 15px;
+}
+
+hr
+{
+    border-top: 1px solid #c7c7c7;
 }

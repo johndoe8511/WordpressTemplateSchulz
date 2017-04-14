@@ -4,7 +4,7 @@
 
 
     <!-- <h2>Menü</h2> -->
-    <?php getNavigationSidemenu(); ?>
+    <?php getNavigationSideMenu('Module'); ?>
 
  
 <?php endif; ?>

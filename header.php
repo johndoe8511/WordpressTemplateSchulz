@@ -5,13 +5,32 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
-	
-<meta http-equiv="cache-control" content="no-cache" />
+    
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta name="expires" content="0">
+    
+    <meta http-equiv="language" content="deutsch, de">
+    <meta name="language" content="de">
+    <meta name="keywords" content="J&uuml;rgen Schulz,Schulz,berufsausbilder,berufsausbilder-schulz.de,berufsausbilder Berlin,berufsausbilder finden,coach,coach-schulz.de,coach Berlin,coach finden,dozent,dozent-schulz.de,dozent Berlin,dozent finden,honorardozent,honorardozent-schulz.de,honorardozent Berlin,honorardozent finden,Training,Coaching,Lehrer,Seminar,Schulung,Team-Coaching,Personal Coaching">
+    <meta name="description" content="J&uuml;rgen Schulz - Dozent | Lehrer  | Coach unverbindliche Anfrage &raquo; Rechnungswesen, Steuern, Wirtschaft.">
+    <meta name="robots" content="index,follow">
+    <meta name="author" content="J&uuml;rgen Schulz">
+    <meta name="page-topic" content="Dienstleistungen">
+    <meta name="revisit-after" CONTENT="14 days">
 
-    <title><?php wp_title(' - ', true, 'right'); ?> <?php bloginfo('name'); ?></title>
+    <!-- http://www.honorardozent-schulz.de -->
+    <meta name="google-site-verification" content="OtWCpTzMxDzfuefI_qyh2bO1MtbFD0hVVMYGdVqhdEg" />
+    <!-- http://www.coach-schulz.de/ -->
+    <meta name="google-site-verification" content="wxHkDHmFNbkI_CMoTwRwz36o4Ss_8oDBRbefYzIk2W0" />
+    <!-- http://www.dozent-schulz.de/  --> 
+    <meta name="google-site-verification" content="aWGaiM3QliTNOO9NwdswTLr69YArSyrueg_XKjiQ8I4" />
+    <!-- http://www.berufsausbilder-schulz.de/  --> 
+    <meta name="google-site-verification" content="dKxnUvQxTcRfv2ATJj-fZMYF3DouoYH55T6h7cT_U1k" />
+    
+    <title>Jürgen Schulz - Dozent | Lehrer  | Coach</title>
     <link rel="icon"  href="<?php bloginfo('template_directory');?>/img/CrestColorTransparent128x128.png">
     <!-- CSS -->
     <!-- Bootstrap -->
@@ -23,8 +42,7 @@
         
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri() ?>/style.css" media="screen"  type="text/css">
-    <?php echo testoo();?>
-        <link href="<?php echo get_stylesheet_directory_uri() ?>/css/dynamicCSS.php" rel="stylesheet" type="text/css">
+    <link href="<?php echo get_stylesheet_directory_uri() ?>/css/dynamicCSS.php" rel="stylesheet" type="text/css">
     <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
     
     <!-- JAVASCRIPT -->
@@ -89,9 +107,3 @@
                         </div><!-- /.container-fluid -->
                     </nav>
                 </div><!-- header -->
-                <div class="imageSchulzWappen">
-                </div><!-- image wappen -->
-    <!-- 
-    <h1><a href="<?php //bloginfo('url'); ?>"><?php //bloginfo('name'); ?></a></h1>
-    <h3><?php //bloginfo('description'); ?></h3>
-    -->

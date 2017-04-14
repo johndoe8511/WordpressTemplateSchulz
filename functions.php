@@ -1,6 +1,38 @@
 <?php
 
-add_theme_support( 'post-thumbnails' );
+//email verschleierung
+function email_encode_function($atts, $content)
+{
+    return '<a href="'.antispambot("mailto:".$content).'">'.antispambot($content).'</a>';
+}
+
+add_shortcode('email','email_encode_function');
+
+//daktivierung der adminbar
+add_action('get_header', 'my_filter_head');
+
+function my_filter_head() 
+{
+    remove_action('wp_head', '_admin_bar_bump_cb');
+}
+
+//deaktiverung der wordpress version im wp head
+remove_action('wp_head','wp_generator');
+
+// deaktivierung der login fehlermeldungen
+add_filter('login_errors',create_function('$a',"return 'Fehlermeldung ausgeschaltet!';"));
+
+//add theme setup add_theme_support
+add_action( 'after_setup_theme', 'theme_setup' );
+
+function theme_setup() 
+{
+    if ( function_exists( 'add_theme_support' ) ) 
+    {
+        add_image_size('custom-small', 200, 150, TRUE);
+        add_theme_support( 'post-thumbnails' );
+    }
+}
 
 // To get the thumbnail in your post, you add the following inside the loop:
 if ( has_post_thumbnail() ) 
@@ -30,7 +62,7 @@ if ( function_exists('register_nav_menus') )
 /**
  * get child page html sidemenü navigation
  */
-function getChildNavigationSideMenu()
+function getChildNavigationSideMenu($lable = '')
 {
     if(is_page())
     {
@@ -45,7 +77,7 @@ function getChildNavigationSideMenu()
         ); 
         $currentPageChildrenArray = get_pages($args); 
        
-        createHTMLPageSideMenuChildNavigaion($currentPageChildrenArray);
+        createHTMLPageSideMenuChildNavigaion($currentPageChildrenArray, $lable);
 
         // echo what we get back from WP to the browser
         //echo '<pre>' . print_r( $currentPageChildrenArray, true ) . '</pre>';
@@ -56,7 +88,7 @@ function getChildNavigationSideMenu()
 /**
  * get same page html sidemenü navigation
  */
-function getNavigationSideMenu()
+function getNavigationSideMenu($lable = '')
 {
     if(is_page())
     {
@@ -72,7 +104,7 @@ function getNavigationSideMenu()
    
         $currentPageChildrenArray = get_pages($args); 
 
-        createHTMLPageSideMenuNavigaion($currentPageChildrenArray);
+        createHTMLPageSideMenuNavigaion($currentPageChildrenArray,$lable);
 
         // echo what we get back from WP to the browser
         //echo '<pre>' . print_r( $currentPageChildrenArray, true ) . '</pre>';
@@ -84,16 +116,15 @@ function getNavigationSideMenu()
  * @global type $post
  * @param type $pageChildrenArray
  */
-function createHTMLPageSideMenuNavigaion($pageChildrenArray)
+function createHTMLPageSideMenuNavigaion($pageChildrenArray, $lable)
 {
     global $post;
     if(!empty($pageChildrenArray))
-    {
+    {s
         ?>
             <div class="list-group">
-                <a href="#" class="list-group-item sidebarHead">Module</a>
+                <p class="list-group-item sidebarHead"><strong><?php echo (empty($lable)?Fachgebiete:$lable);?></strong></p>
         <?php
-        
         foreach ($pageChildrenArray as $child) 
         {
             if($child->post_parent == $post->post_parent)
@@ -112,13 +143,14 @@ function createHTMLPageSideMenuNavigaion($pageChildrenArray)
  * @global type $post
  * @param type $pageChildrenArray
  */
-function createHTMLPageSideMenuChildNavigaion($pageChildrenArray)
+function createHTMLPageSideMenuChildNavigaion($pageChildrenArray, $lable)
 {
     global $post;
     if(!empty($pageChildrenArray))
     {
         ?>
             <div class="list-group">
+                <p class="list-group-item sidebarHead"><strong><?php echo (empty($lable)?Fachgebiete:$lable);?></strong></p>
         <?php
         foreach ($pageChildrenArray as $child) 
         {
@@ -231,7 +263,10 @@ function nav_breadcrumb()
                 $parent_id = $page->post_parent;
             }
             $breadcrumbs = array_reverse($breadcrumbs);
-            foreach ($breadcrumbs as $crumb) echo $crumb . ' ' . $delimiter . ' ';
+            foreach ($breadcrumbs as $crumb)
+            {
+                echo $crumb . ' ' . $delimiter . ' ';
+            }
             echo $before . get_the_title() . $after;
 
         } 
@@ -295,24 +330,6 @@ function checkPostParrentsByPostTitle($postParentId, $comparedPostName = '' )
     }
    
    return false;
-}
-
-/**
- * set dropdown navi link button to active background color when child post 
- * which listed in dropdown is viewed by user
- * @param string $comparedPostName
- */
-function setBackgroundColorDropDownButton($comparedPostName = '')
-{ 
-    global $post;
-    if(checkPostParrentsByPostTitle($post->post_parent, $comparedPostName))
-    {
-        ?>
-            <script type="text/javascript">
-                $('#NavLink_<?php echo $comparedPostName;?>').css({"background-color":"#23527c"});
-            </script>
-        <?php
-    }
 }
 
 /**********************************************************************************
@@ -876,9 +893,3 @@ function remove_admin_menus()
 {
     remove_menu_page( 'edit-comments.php' );
 }
-
-function testoo()
-{
-    return '#FFEF72';
-}
-?>

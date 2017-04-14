@@ -8,7 +8,7 @@ Template Name: Seite ohne Seitenmenü und ohne Seitennachvervolgung mit Wappen
 <div class="container-fluid">
     <div class="row">
         
-        <div id="main" class="col-xs-12 col-sm-12 col-md-12">
+        <div id="main" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div id="content" >
                 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
                     <h2><?php the_title(); ?></h2>
